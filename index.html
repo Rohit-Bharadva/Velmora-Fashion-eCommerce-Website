@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion E-Commerce Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-logo">
+            <a href="index.html">Velmora</a>
+        </div>
+
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="Shop.html">Shop</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+            
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+            <button class="mobile-menu-button" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Fashion Sale</h1>
+            <p class="hero-subtitle">Up to 50% Off</p>
+            <button class="hero-button">
+                Shop Now
+            </button>
+        </div>
+
+        <div class="hero-image-container">
+            <img src="img/hero_image.png"
+                 alt="Featured model in fashion sale" class="hero-image">
+        </div>
+    </section>
+
+    <section class="category-section">
+        <h2 class="category-title">Shop By Category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="img/Catagory1.png"
+                     alt="New Arrivals" class="category-card-image">
+                <div class="category-card-content">
+                    <h3 class="category-card-title">New Arrivals</h3>
+                    <p class="category-card-description">Discover the latest trends</p>
+                    <a href="#" class="category-card-link">Shop Now &rarr;</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="img/Catagory2.png"
+                     alt="Women's Collection" class="category-card-image">
+                <div class="category-card-content">
+                    <h3 class="category-card-title">Women’s</h3>
+                    <p class="category-card-description">Explore feminine styles</p>
+                    <a href="#" class="category-card-link">Shop Now &rarr;</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="img/Catagory3.png"
+                     alt="Men's Collection" class="category-card-image">
+                <div class="category-card-content">
+                    <h3 class="category-card-title">Men’s</h3>
+                    <p class="category-card-description">Find your perfect fit</p>
+                    <a href="#" class="category-card-link">Shop Now &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="shop-arrivals-section">
+        <h2 class="shop-arrivals-title">Shop Arrivals</h2>
+        <div class="product-scroll-container" id="shop-arrivals-container">
+            <div class="product-card-wrapper">
+                <div class="product-card">
+                    <img src="img/Urban Relaxed Oversized T-Shirt.png"
+                         alt="Urban Relaxed Oversized T-Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Urban Relaxed Oversized T-Shirt</h3>
+                        <p class="product-price">$35.99</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button"
+                                    data-name="Urban Relaxed Oversized T-Shirt"
+                                    data-price="35.99"
+                                    data-image="img/Urban Relaxed Oversized T-Shirt.png"
+                                    data-desc="Cool pastel, gender-neutral, premium cotton blend."
+                                    data-gallery="[&quot;img/Urban Relaxed Oversized T-Shirt.png&quot;, &quot;https://placehold.co/600x800/E0D6CB/374151?text=Tshirt+Front&quot;]"
+                                    >Quick View</button>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card-wrapper">
+                <div class="product-card">
+                    <img src="img/Women's Pastel Pink Shirt.png"
+                         alt="Women's Pastel Pink Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Women's Pastel Pink Shirt</h3>
+                        <p class="product-price">$38.99</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button"
+                                    data-name="Women's Pastel Pink Shirt"
+                                    data-price="38.99"
+                                    data-image="img/Women's Pastel Pink Shirt.png"
+                                    data-desc="Soft pastel, relaxed fit, perfect for summer days."
+                                    data-gallery="[&quot;img/Women's Pastel Pink Shirt.png&quot;]"
+                                    >Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card-wrapper">
+                <div class="product-card">
+                    <img src="img/Minimalist Oversized T-Shirt.png"
+                         alt="Minimalist Oversized T-Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Minimalist Oversized T-Shirt</h3>
+                        <p class="product-price">$32.99</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button"
+                                    data-name="Minimalist Oversized T-Shirt"
+                                    data-price="32.99"
+                                    data-image="img/Minimalist Oversized T-Shirt.png"
+                                    data-desc="Soft-touch fabric, drop shoulder, for men &amp; women."
+                                    data-gallery="[&quot;img/Minimalist Oversized T-Shirt.png&quot;]"
+                                    >Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card-wrapper">
+                <div class="product-card">
+                    <img src="img/Women's Lavender Oversized Shirt.png"
+                         alt="Women's Lavender Oversized Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Women's Lavender Oversized Shirt</h3>
+                        <p class="product-price">$41.99</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button"
+                                    data-name="Women's Lavender Oversized Shirt"
+                                    data-price="41.99"
+                                    data-image="img/Women's Lavender Oversized Shirt.png"
+                                    data-desc="Trendy lavender, oversized, lightweight and airy."
+                                    data-gallery="[&quot;img/Women's Lavender Oversized Shirt.png&quot;]"
+                                    >Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card-wrapper">
+                <div class="product-card">
+                    <img src="img/Men's Denim Shirt.png"
+                         alt="Men's Denim Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Men's Denim Shirt</h3>
+                        <p class="product-price">$49.99</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button"
+                                    data-name="Men's Denim Shirt"
+                                    data-price="49.99"
+                                    data-image="img/Men's Denim Shirt.png"
+                                    data-desc="Classic blue denim, button-down, versatile for all seasons."
+                                    data-gallery="[&quot;img/Men's Denim Shirt.png&quot;, &quot;https://placehold.co/600x800/E0D6CB/374151?text=Denim+Shirt+Alt&quot;]"
+                                    >Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card-wrapper">
+                <div class="product-card">
+                    <img src="img/Women's Mustard Shirt.png"
+                         alt="Women's Mustard Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Women's Mustard Shirt</h3>
+                        <p class="product-price">$36.50</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button"
+                                    data-name="Women's Mustard Shirt"
+                                    data-price="36.50"
+                                    data-image="img/Women's Mustard Shirt.png"
+                                    data-desc="Bright color, boxy fit, pairs well with jeans or skirts."
+                                    data-gallery="[&quot;img/Women's Mustard Shirt.png&quot;]"
+                                    >Quick View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card-wrapper">
+                <div class="product-card">
+                    <img src="img/Essential Oversized T-Shirt.png"
+                         onerror="this.src='https://placehold.co/300x400/D0D0D0/444444?text=Product+3+Fallback'"
+                         alt="Essential Oversized T-Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Essential Oversized T-Shirt</h3>
+                        <p class="product-price">$34.99</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button"
+                                    data-name="Essential Oversized T-Shirt"
+                                    data-price="34.99"
+                                    data-image="img/Essential Oversized T-Shirt.png"
+                                    data-desc="Unisex, 100% cotton, relaxed fit. Perfect for streetwear style."
+                                    data-gallery="[&quot;img/Essential Oversized T-Shirt.png&quot;, &quot;https://placehold.co/600x800/E0D6CB/374151?text=Tshirt+Front&quot;]"
+                                    >Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card-wrapper">
+                <div class="product-card">
+                    <img src="img/Women's Grey Striped Shirt.png"
+                         alt="Women's Grey Striped Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Women's Grey Striped Shirt</h3>
+                        <p class="product-price">$40.00</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button"
+                                    data-name="Women's Grey Striped Shirt"
+                                    data-price="40.00"
+                                    data-image="img/Women's Grey Striped Shirt.png"
+                                    data-desc="Subtle stripes, modern cut, soft and comfortable."
+                                    data-gallery="[&quot;img/Women's Grey Striped Shirt.png&quot;]"
+                                    >Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
+
+    <section class="testimonials-section">
+        <h2 class="testimonials-title">What Our Customers Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <img src="img/user.svg"
+                     alt="Customer Photo" class="testimonial-photo">
+                <p class="testimonial-quote">"Absolutely thrilled with my purchase! The clothes are not only stylish but also incredibly comfortable and well-made. Every piece feels thoughtfully designed, and I’ve received so many compliments. Shopping here was easy and the delivery was super fast. I’ll definitely be coming back for more!"</p>
+                <div class="star-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="customer-name">- Jane Doe</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="img/user.svg"
+                     onerror="this.src='https://placehold.co/80x80/EFEFEF/666666?text=👤+Fallback'"
+                     alt="Customer Photo" class="testimonial-photo">
+                <p class="testimonial-quote">
+                    "Great shopping experience! The clothes look amazing and fit perfectly. Fast delivery and excellent customer service. Will shop again!"
+                </p>
+                <div class="star-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="customer-name">- John Smith</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <h2 class="newsletter-heading">Stay Updated & Get 10% Off!</h2>
+        <p class="newsletter-subtext">Sign up for our newsletter to receive exclusive offers and updates.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email"
+                   class="newsletter-input">
+            <button type="submit" class="newsletter-button">
+                Subscribe
+            </button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3 class="footer-heading">Company</h3>
+                <ul class="footer-list">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Help</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-heading">Payment Methods</h3>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-text">
+            &copy; 2023 Fashion Store. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const shopArrivalsContainer = document.getElementById('shop-arrivals-container');
+            let productCards = Array.from(shopArrivalsContainer.querySelectorAll('.product-card-wrapper'));
+
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            function attachProductCardListeners(cardWrapper) {
+                const quickViewButton = cardWrapper.querySelector('.quick-view-button');
+                const addToCartButton = cardWrapper.querySelector('.add-to-cart-button');
+                const productCard = cardWrapper.querySelector('.product-card');
+
+                if (quickViewButton) {
+                    quickViewButton.removeEventListener('click', handleQuickViewClick); // Prevent duplicates
+                    quickViewButton.addEventListener('click', handleQuickViewClick);
+                }
+
+                if (addToCartButton) {
+                    addToCartButton.removeEventListener('click', handleAddToCartClick); // Prevent duplicates
+                    addToCartButton.addEventListener('click', handleAddToCartClick);
+                }
+
+                if (productCard) {
+                    productCard.removeEventListener('click', handleProductCardClick); // Prevent duplicates
+                    productCard.addEventListener('click', handleProductCardClick);
+                }
+            }
+
+            function handleQuickViewClick(event) {
+                event.stopPropagation();
+                const button = event.currentTarget;
+                const name = button.dataset.name;
+                const price = button.dataset.price;
+                const image = button.dataset.image;
+                const desc = button.dataset.desc;
+                const gallery = button.dataset.gallery;
+
+                window.location.href = `Product.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}&desc=${encodeURIComponent(desc)}&gallery=${encodeURIComponent(gallery)}`;
+            }
+
+            function handleAddToCartClick(event) {
+                event.stopPropagation();
+                const button = event.currentTarget;
+                const name = button.dataset.name;
+                alert(`Added "${name}" to cart!`);
+            }
+
+            function handleProductCardClick(event) {
+                if (!event.target.classList.contains('product-action-button')) {
+                    const card = event.currentTarget;
+                    const titleElement = card.querySelector('.product-title');
+                    const priceElement = card.querySelector('.product-price');
+                    const imageElement = card.querySelector('.product-card-image');
+                    const quickViewButton = card.querySelector('.quick-view-button');
+
+                    const name = titleElement ? titleElement.textContent : '';
+                    const price = priceElement ? priceElement.textContent.replace('$', '') : '';
+                    const image = imageElement ? imageElement.src : '';
+
+                    const desc = quickViewButton ? quickViewButton.dataset.desc : '';
+                    const gallery = quickViewButton ? quickViewButton.dataset.gallery : '[]'; // Default empty array
+
+                    window.location.href = `Product.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}&desc=${encodeURIComponent(desc)}&gallery=${encodeURIComponent(gallery)}`;
+                }
+            }
+
+            // Apply listeners to the initially loaded cards
+            productCards.forEach(attachProductCardListeners);
+
+            let scrollAmount = 0;
+            const scrollStep = 320;
+            const delay = 3000;
+
+            setInterval(() => {
+                if (!shopArrivalsContainer) return;
+
+                if (scrollAmount + shopArrivalsContainer.clientWidth >= shopArrivalsContainer.scrollWidth) {
+                    productCards = shuffleArray(productCards);
+
+                    shopArrivalsContainer.innerHTML = ''; // Clear existing
+                    productCards.forEach(card => shopArrivalsContainer.appendChild(card)); // Re-append shuffled
+
+                    scrollAmount = 0;
+                    shopArrivalsContainer.scrollTo({
+                        left: scrollAmount,
+                        behavior: 'auto'
+                    });
+                } else {
+                    scrollAmount += scrollStep;
+                }
+
+                shopArrivalsContainer.scrollTo({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+
+            }, delay);
+
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const headerNav = document.querySelector('.header-nav');
+            const menuIcon = mobileMenuButton.querySelector('i');
+
+            if (mobileMenuButton && headerNav && menuIcon) {
+                mobileMenuButton.addEventListener('click', () => {
+                    headerNav.classList.toggle('nav-active');
+                    if (headerNav.classList.contains('nav-active')) {
+                        menuIcon.classList.remove('fa-bars');
+                        menuIcon.classList.add('fa-times');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

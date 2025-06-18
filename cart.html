@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart - Velmora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css"> <link rel="stylesheet" href="css/cart.css"> </head>
+<body>
+
+    <header class="header">
+        <div class="header-logo">
+            <a href="index.html">Velmora</a>
+        </div>
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="Shop.html">Shop</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+        <div class="header-icons">
+           
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a> <button class="mobile-menu-button" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="cart-page-container">
+        <h1 class="cart-title">Your Shopping Cart</h1>
+
+        <div class="cart-content-wrapper">
+            <section class="cart-items-section">
+                <div class="cart-table-header">
+                    <div class="product-col">Product</div>
+                    <div class="price-col">Price</div>
+                    <div class="quantity-col">Quantity</div>
+                </div>
+                <div id="cart-items-body" class="cart-table-body">
+                    </div>
+                <div class="cart-subtotal-footer">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal-bottom">$0.00</span>
+                </div>
+            </section>
+
+            <aside class="cart-summary-section">
+                <h2 class="summary-title">Cart Summary</h2>
+                <div class="summary-line">
+                    <span>Subtotal</span>
+                    <span id="cart-summary-subtotal">$0.00</span>
+                </div>
+                <button class="checkout-button">Checkout</button>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3 class="footer-heading">Company</h3>
+                <ul class="footer-list">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Help</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-heading">Payment Methods</h3>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-text">
+            &copy; 2023 Fashion Store. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // js/cart.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cartItemsBody = document.getElementById('cart-items-body');
+    const cartSubtotalBottom = document.getElementById('cart-subtotal-bottom');
+    const cartSummarySubtotal = document.getElementById('cart-summary-subtotal');
+
+    // --- Cart Management Functions ---
+
+    // Get cart items from localStorage
+    function getCartItems() {
+        const cart = localStorage.getItem('shoppingCart');
+        return cart ? JSON.parse(cart) : [];
+    }
+
+    // Save cart items to localStorage
+    function saveCartItems(cart) {
+        localStorage.setItem('shoppingCart', JSON.stringify(cart));
+    }
+
+    // Add item to cart
+    function addItemToCart(product) {
+        const cart = getCartItems();
+        const existingItem = cart.find(item => item.id === product.id);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
+        saveCartItems(cart);
+        updateCartDisplay(); // Re-render cart after adding
+    }
+
+    // Update item quantity in cart
+    function updateCartItemQuantity(productId, newQuantity) {
+        let cart = getCartItems();
+        newQuantity = parseInt(newQuantity);
+
+        if (newQuantity < 1) {
+            // If quantity is less than 1, remove the item
+            cart = cart.filter(item => item.id !== productId);
+        } else {
+            const itemToUpdate = cart.find(item => item.id === productId);
+            if (itemToUpdate) {
+                itemToUpdate.quantity = newQuantity;
+            }
+        }
+        saveCartItems(cart);
+        updateCartDisplay(); // Re-render cart after updating
+    }
+
+    // Remove item from cart
+    function removeCartItem(productId) {
+        let cart = getCartItems();
+        cart = cart.filter(item => item.id !== productId);
+        saveCartItems(cart);
+        updateCartDisplay(); // Re-render cart after removing
+    }
+
+    // Calculate total subtotal
+    function calculateSubtotal() {
+        const cart = getCartItems();
+        return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    }
+
+    // --- Rendering Functions ---
+
+    // Render individual cart item HTML
+    function renderCartItem(item) {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('cart-item');
+        itemDiv.dataset.productId = item.id; // Store product ID on the element for easy access
+
+        itemDiv.innerHTML = `
+            <div class="product-col">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <h3 class="cart-item-name">${item.name}</h3>
+                    <p class="cart-item-info">Size: Mearm</p> <button class="cart-item-remove" data-product-id="${item.id}">Remove</button>
+                </div>
+            </div>
+            <div class="price-col">$${item.price.toFixed(2)}</div>
+            <div class="quantity-col">
+                <button class="quantity-btn minus-btn" data-product-id="${item.id}">-</button>
+                <input type="number" value="${item.quantity}" min="1" class="quantity-input" data-product-id="${item.id}">
+                <button class="quantity-btn plus-btn" data-product-id="${item.id}">+</button>
+            </div>
+        `;
+        return itemDiv;
+    }
+
+    // Update the entire cart display
+    function updateCartDisplay() {
+        const cart = getCartItems();
+        cartItemsBody.innerHTML = ''; // Clear current items
+
+        if (cart.length === 0) {
+            cartItemsBody.innerHTML = '<p style="text-align: center; padding: 2rem; color: #6b7280;">Your cart is empty.</p>';
+        } else {
+            cart.forEach(item => {
+                cartItemsBody.appendChild(renderCartItem(item));
+            });
+        }
+
+        const subtotal = calculateSubtotal();
+        cartSubtotalBottom.textContent = `$${subtotal.toFixed(2)}`;
+        cartSummarySubtotal.textContent = `$${subtotal.toFixed(2)}`;
+
+        attachCartEventListeners(); // Re-attach listeners after re-rendering
+    }
+
+    // --- Event Listeners for Cart Page ---
+
+    function attachCartEventListeners() {
+        // Quantity buttons
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+            button.removeEventListener('click', handleQuantityChange); // Remove old listeners
+            button.addEventListener('click', handleQuantityChange);
+        });
+
+        // Quantity input fields
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.removeEventListener('change', handleQuantityInputChange); // Remove old listeners
+            input.addEventListener('change', handleQuantityInputChange);
+            input.removeEventListener('input', handleQuantityInputImmediateChange); // Remove old listeners
+            input.addEventListener('input', handleQuantityInputImmediateChange); // For immediate feedback
+        });
+
+
+        // Remove item buttons
+        document.querySelectorAll('.cart-item-remove').forEach(button => {
+            button.removeEventListener('click', handleRemoveItem); // Remove old listeners
+            button.addEventListener('click', handleRemoveItem);
+        });
+
+        // Checkout button (placeholder)
+        const checkoutButton = document.querySelector('.checkout-button');
+        if (checkoutButton) {
+            checkoutButton.removeEventListener('click', handleCheckout); // Remove old listeners
+            checkoutButton.addEventListener('click', handleCheckout);
+        }
+    }
+
+    function handleQuantityChange(event) {
+        const productId = event.target.dataset.productId;
+        const input = document.querySelector(`.quantity-input[data-product-id="${productId}"]`);
+        let currentQuantity = parseInt(input.value);
+
+        if (event.target.classList.contains('plus-btn')) {
+            currentQuantity++;
+        } else if (event.target.classList.contains('minus-btn')) {
+            currentQuantity--;
+        }
+        updateCartItemQuantity(productId, currentQuantity);
+    }
+
+    function handleQuantityInputChange(event) {
+        const productId = event.target.dataset.productId;
+        const newQuantity = parseInt(event.target.value);
+        if (!isNaN(newQuantity)) {
+            updateCartItemQuantity(productId, newQuantity);
+        } else {
+            // Revert to previous valid quantity if input is invalid
+            updateCartDisplay();
+        }
+    }
+
+    // For immediate visual update as user types (optional, can be removed)
+    function handleQuantityInputImmediateChange(event) {
+        const productId = event.target.dataset.productId;
+        const newQuantity = parseInt(event.target.value);
+        const cart = getCartItems();
+        const item = cart.find(i => i.id === productId);
+
+        if (item && !isNaN(newQuantity) && newQuantity >= 0) {
+            item.quantity = newQuantity;
+            saveCartItems(cart); // Temporarily save to update subtotal
+            updateSubtotalOnly(); // Update only the subtotal
+        }
+        if(newQuantity === 0) { // If user types 0, remove the item
+            removeCartItem(productId);
+        }
+    }
+
+    function updateSubtotalOnly() {
+        const subtotal = calculateSubtotal();
+        cartSubtotalBottom.textContent = `$${subtotal.toFixed(2)}`;
+        cartSummarySubtotal.textContent = `$${subtotal.toFixed(2)}`;
+    }
+
+
+    function handleRemoveItem(event) {
+        const productId = event.target.dataset.productId;
+        removeCartItem(productId);
+    }
+
+    function handleCheckout() {
+        const cart = getCartItems();
+        if (cart.length > 0) {
+            alert('Proceeding to checkout with ' + cart.length + ' items. (This is a placeholder action)');
+            // In a real application, you would navigate to a checkout page
+            // window.location.href = 'checkout.html';
+        } else {
+            alert('Your cart is empty. Add some items before checking out!');
+        }
+    }
+
+    // Initialize cart display when the page loads
+    updateCartDisplay();
+
+    // --- Add to Cart Feature (for index.html/Product.html's JavaScript) ---
+    // This part should ideally be in a shared `main.js` or `product.js`
+    // but for demonstration, I'll put a simplified version here
+    // You should ensure your existing "Add to Cart" buttons call `addItemToCart`
+
+    // Example of how the 'Add to Cart' button on index.html/Product.html should work:
+    // (This code snippet is for your `main.js` or `index.html`'s script, not `cart.js`)
+    // document.querySelectorAll('.add-to-cart-button').forEach(button => {
+    //     button.addEventListener('click', (event) => {
+    //         const productId = event.target.dataset.name.replace(/\s+/g, '-').toLowerCase(); // Simple ID generation
+    //         const productName = event.target.dataset.name;
+    //         const productPrice = parseFloat(event.target.closest('.product-card').querySelector('.product-price').textContent.replace('$', ''));
+    //         const productImage = event.target.closest('.product-card').querySelector('.product-card-image').src;
+    //
+    //         const productToAdd = {
+    //             id: productId,
+    //             name: productName,
+    //             price: productPrice,
+    //             image: productImage
+    //             // You can add size, color if available from data attributes
+    //         };
+    //         addItemToCart(productToAdd); // Call the function defined in cart.js (or a shared utility)
+    //         alert(`"${productName}" added to cart!`);
+    //     });
+    // });
+});
+// This section goes into your existing index.html <script> or main.js
+// Make sure this is loaded AFTER cart.js or cart.js functions are globally accessible.
+
+// Ensure addItemToCart is accessible (e.g., if cart.js is loaded first, this is fine)
+// Or, explicitly define a global cart management object if you prefer:
+// window.velmoraCart = {
+//     addItem: function(product) { /* ... implementation from cart.js ... */ },
+//     get: function() { /* ... */ }
+// };
+// Then call window.velmoraCart.addItem(...)
+
+document.querySelectorAll('.add-to-cart-button').forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent card's click event
+
+        const productCard = event.target.closest('.product-card'); // Get the parent product card
+        const productName = productCard.querySelector('.product-title').textContent;
+        const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+        const productImage = productCard.querySelector('.product-card-image').src;
+
+        // Create a unique ID for the product (e.g., lowercase, replace spaces with hyphens)
+        const productId = productName.replace(/\s+/g, '-').toLowerCase();
+
+        const productToAdd = {
+            id: productId,
+            name: productName,
+            price: productPrice,
+            image: productImage
+            // You can add size, color if you have these as data attributes on the product card or button
+            // For example: size: button.dataset.size || 'M',
+        };
+
+        // Check if addItemToCart exists globally (from cart.js)
+        if (typeof addItemToCart === 'function') {
+            addItemToCart(productToAdd);
+            alert(`"${productName}" added to cart!`);
+        } else {
+            console.error("addItemToCart function not found. Is cart.js loaded correctly?");
+            alert("Could not add to cart. Please try again.");
+        }
+    });
+});
+
+// Update the `Product.html` redirect for the main card click
+// Ensure this also calls `addItemToCart` if it wants to add directly, or just redirects.
+// The provided `handleQuickViewClick` and `handleProductCardClick` already redirect to Product.html.
+// Product.html will need its own 'Add to Cart' button implementation.
+ // Hamburger Menu Logic
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const headerNav = document.querySelector('.header-nav');
+            const menuIcon = mobileMenuButton.querySelector('i');
+
+            if (mobileMenuButton && headerNav && menuIcon) {
+                mobileMenuButton.addEventListener('click', () => {
+                    // Toggle the 'nav-active' class on the navigation menu
+                    headerNav.classList.toggle('nav-active');
+
+                    // Toggle hamburger icon (bars to times, or vice-versa)
+                    if (headerNav.classList.contains('nav-active')) {
+                        menuIcon.classList.remove('fa-bars');
+                        menuIcon.classList.add('fa-times'); // Show 'X' icon
+                        // Prevent body scrolling when the menu is open
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars'); // Show hamburger icon
+                        // Re-enable body scrolling
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+    </script>
+</body>
+</html>

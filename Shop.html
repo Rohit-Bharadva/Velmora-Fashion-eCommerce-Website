@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Velmora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/Shop.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-logo">
+            <a href="index.html">Velmora</a>
+        </div>
+
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="Shop.html">Shop</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+            <button class="mobile-menu-button" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="shop-page-container">
+        <section class="products-grid-section">
+            <h1 class="visually-hidden">Shop All Products</h1>
+            <div class="products-grid" id="products-grid">
+                <div class="product-card" data-page="1" 
+                     data-name="Essential Oversized T-Shirt" 
+                     data-price="34.99" 
+                     data-image="img/Essential Oversized T-Shirt.png" 
+                     data-desc="Unisex, 100% cotton, relaxed fit. Perfect for streetwear style."
+                     data-category="Oversized T-Shirts">
+                    <img src="img/Essential Oversized T-Shirt.png" alt="Black Oversized T-Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Essential Oversized T-Shirt</h3>
+                        <p class="product-price">$34.99</p>
+                        <p class="product-desc">Unisex, 100% cotton, relaxed fit. Perfect for streetwear style.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="1" 
+                     data-name="Minimalist Oversized T-Shirt" 
+                     data-price="32.99" 
+                     data-image="img/Minimalist Oversized T-Shirt.png" 
+                     data-desc="Soft-touch fabric, drop shoulder, for men & women."
+                     data-category="Oversized T-Shirts">
+                    <img src="img/Minimalist Oversized T-Shirt.png" alt="White Oversized T-Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Minimalist Oversized T-Shirt</h3>
+                        <p class="product-price">$32.99</p>
+                        <p class="product-desc">Soft-touch fabric, drop shoulder, for men & women.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="1" 
+                     data-name="Premium Comfort Oversized T-Shirt" 
+                     data-price="36.99" 
+                     data-image="img/Premium Comfort Oversized T-Shirt.png" 
+                     data-desc="Trendy color, breathable, oversized fit for all-day comfort."
+                     data-category="Oversized T-Shirts">
+                    <img src="img/Premium Comfort Oversized T-Shirt.png" alt="Yellow Oversized T-Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Premium Comfort Oversized T-Shirt</h3>
+                        <p class="product-price">$36.99</p>
+                        <p class="product-desc">Trendy color, breathable, oversized fit for all-day comfort.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="1" 
+                     data-name="Urban Relaxed Oversized T-Shirt" 
+                     data-price="35.99" 
+                     data-image="img/Urban Relaxed Oversized T-Shirt.png" 
+                     data-desc="Cool pastel, gender-neutral, premium cotton blend."
+                     data-category="Oversized T-Shirts">
+                    <img src="img/Urban Relaxed Oversized T-Shirt.png" alt="Blue Oversized T-Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Urban Relaxed Oversized T-Shirt</h3>
+                        <p class="product-price">$35.99</p>
+                        <p class="product-desc">Cool pastel, gender-neutral, premium cotton blend.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="2" 
+                     data-name="Men's Brown Checked Shirt" 
+                     data-price="44.99" 
+                     data-image="img/Men's Brown Checked Shirt.png" 
+                     data-desc="Trendy checks, regular fit, soft brushed fabric."
+                     data-category="Trending Shirts for Men">
+                    <img src="img/Men's Brown Checked Shirt.png" alt="Men's Checked Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Men's Brown Checked Shirt</h3>
+                        <p class="product-price">$44.99</p>
+                        <p class="product-desc">Trendy checks, regular fit, soft brushed fabric.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="2" 
+                     data-name="Men's Denim Shirt" 
+                     data-price="49.99" 
+                     data-image="img/Men's Denim Shirt.png" 
+                     data-desc="Classic blue denim, button-down, versatile for all seasons."
+                     data-category="Trending Shirts for Men">
+                    <img src="img/Men's Denim Shirt.png" alt="Men's Denim Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Men's Denim Shirt</h3>
+                        <p class="product-price">$49.99</p>
+                        <p class="product-desc">Classic blue denim, button-down, versatile for all seasons.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="2" 
+                     data-name="Men's Abstract Print Shirt" 
+                     data-price="39.99" 
+                     data-image="img/Men's Abstract Print Shirt.png" 
+                     data-desc="Bold prints, lightweight, perfect for parties & outings."
+                     data-category="Trending Shirts for Men">
+                    <img src="img/Men's Abstract Print Shirt.png" alt="Men's Printed Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Men's Abstract Print Shirt</h3>
+                        <p class="product-price">$39.99</p>
+                        <p class="product-desc">Bold prints, lightweight, perfect for parties & outings.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="2" 
+                     data-name="Men's Olive Green Shirt" 
+                     data-price="42.99" 
+                     data-image="img/Men's Olive Green Shirt.png" 
+                     data-desc="Earthy tones, slim fit, soft and breathable fabric."
+                     data-category="Trending Shirts for Men">
+                    <img src="img/Men's Olive Green Shirt.png" alt="Men's Green Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Men's Olive Green Shirt</h3>
+                        <p class="product-price">$42.99</p>
+                        <p class="product-desc">Earthy tones, slim fit, soft and breathable fabric.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="3" 
+                     data-name="Women's Pastel Pink Shirt" 
+                     data-price="38.99" 
+                     data-image="img/Women's Pastel Pink Shirt.png" 
+                     data-desc="Soft pastel, relaxed fit, perfect for summer days."
+                     data-category="Trending Shirts for Women">
+                    <img src="img/Women's Pastel Pink Shirt.png" alt="Women's Pink Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Women's Pastel Pink Shirt</h3>
+                        <p class="product-price">$38.99</p>
+                        <p class="product-desc">Soft pastel, relaxed fit, perfect for summer days.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="3" 
+                     data-name="Women's Lavender Oversized Shirt" 
+                     data-price="41.99" 
+                     data-image="img/Women's Lavender Oversized Shirt.png" 
+                     data-desc="Trendy lavender, oversized, lightweight and airy."
+                     data-category="Trending Shirts for Women">
+                    <img src="img/Women's Lavender Oversized Shirt.png" alt="Women's Lavender Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Women's Lavender Oversized Shirt</h3>
+                        <p class="product-price">$41.99</p>
+                        <p class="product-desc">Trendy lavender, oversized, lightweight and airy.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="3" 
+                     data-name="Women's Mustard Shirt" 
+                     data-price="36.50" 
+                     data-image="img/Women's Mustard Shirt.png" 
+                     data-desc="Bright color, boxy fit, pairs well with jeans or skirts."
+                     data-category="Trending Shirts for Women">
+                    <img src="img/Women's Mustard Shirt.png" alt="Women's Yellow Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Women's Mustard Shirt</h3>
+                        <p class="product-price">$36.50</p>
+                        <p class="product-desc">Bright color, boxy fit, pairs well with jeans or skirts.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-page="3" 
+                     data-name="Women's Grey Striped Shirt" 
+                     data-price="40.00" 
+                     data-image="img/Women's Grey Striped Shirt.png" 
+                     data-desc="Subtle stripes, modern cut, soft and comfortable."
+                     data-category="Trending Shirts for Women">
+                    <img src="img/Women's Grey Striped Shirt.png" alt="Women's Grey Shirt" class="product-card-image">
+                    <div class="product-card-content">
+                        <h3 class="product-title">Women's Grey Striped Shirt</h3>
+                        <p class="product-price">$40.00</p>
+                        <p class="product-desc">Subtle stripes, modern cut, soft and comfortable.</p>
+                        <div class="product-actions">
+                            <button class="product-action-button quick-view-button">Quick View</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination" id="pagination">
+                <button class="pagination-button" data-direction="prev">&laquo; Previous</button>
+                <button class="pagination-button page-number active" data-page-num="1">1</button>
+                <button class="pagination-button page-number" data-page-num="2">2</button>
+                <button class="pagination-button page-number" data-page-num="3">3</button>
+                <button class="pagination-button" data-direction="next">Next &raquo;</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3 class="footer-heading">Company</h3>
+                <ul class="footer-list">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Help</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-heading">Payment Methods</h3>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-text">
+            &copy; 2023 Fashion Store. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const priceRangeSlider = document.querySelector('.price-range-slider');
+            const minPriceDisplay = document.getElementById('min-price');
+            const maxPriceDisplay = document.getElementById('max-price');
+
+            if (priceRangeSlider) {
+                priceRangeSlider.addEventListener('input', (event) => {
+                    maxPriceDisplay.textContent = event.target.value;
+                });
+            }
+
+            const sizeButtons = document.querySelectorAll('.size-button');
+            sizeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    sizeButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
+
+            // Pagination Logic
+            const productsGrid = document.getElementById('products-grid');
+            const productCards = productsGrid.querySelectorAll('.product-card');
+            const paginationContainer = document.getElementById('pagination');
+            const pageNumberButtons = paginationContainer.querySelectorAll('.page-number');
+            const prevButton = paginationContainer.querySelector('[data-direction="prev"]');
+            const nextButton = paginationContainer.querySelector('[data-direction="next"]');
+
+            const productsPerPage = 4; // Show 4 products per page
+            let currentPage = 1;
+            const totalPages = 3; // Now 3 pages
+
+            // Set data-page attributes: 4 products per page
+            productCards.forEach((card, idx) => {
+                card.dataset.page = String(Math.floor(idx / productsPerPage) + 1);
+            });
+
+            function showPage(page, animate = true) {
+                if (page === currentPage && animate) {
+                    return;
+                }
+
+                if (animate) {
+                    productsGrid.classList.add('fade-out');
+                    productsGrid.classList.remove('fade-in');
+                }
+
+                setTimeout(() => {
+                    currentPage = page;
+
+                    productCards.forEach(card => {
+                        card.style.display = 'none';
+                    });
+
+                    productCards.forEach(card => {
+                        const cardPage = parseInt(card.dataset.page);
+                        if (cardPage === currentPage) {
+                            card.style.display = 'flex';
+                        }
+                    });
+
+                    pageNumberButtons.forEach(button => {
+                        if (parseInt(button.dataset.pageNum) === currentPage) {
+                            button.classList.add('active');
+                        } else {
+                            button.classList.remove('active');
+                        }
+                    });
+
+                    if (prevButton) {
+                        prevButton.disabled = currentPage === 1;
+                    }
+                    if (nextButton) {
+                        nextButton.disabled = currentPage === totalPages;
+                    }
+
+                    if (animate) {
+                        productsGrid.classList.remove('fade-out');
+                        productsGrid.classList.add('fade-in');
+                    }
+
+                    // Scroll to navbar (header) instead of products grid
+                    const header = document.querySelector('.header');
+                    if (header) {
+                        header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+
+                }, animate ? 300 : 0);
+            }
+
+            pageNumberButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const pageNum = parseInt(button.dataset.pageNum);
+                    showPage(pageNum, true);
+                });
+            });
+
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        showPage(currentPage - 1, true);
+                    }
+                });
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        showPage(currentPage + 1, true);
+                    }
+                });
+            }
+
+            showPage(currentPage, false);
+        });
+
+           // Hamburger Menu Logic
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const headerNav = document.querySelector('.header-nav');
+            const menuIcon = mobileMenuButton.querySelector('i');
+
+            if (mobileMenuButton && headerNav && menuIcon) {
+                mobileMenuButton.addEventListener('click', () => {
+                    // Toggle the 'nav-active' class on the navigation menu
+                    headerNav.classList.toggle('nav-active');
+
+                    // Toggle hamburger icon (bars to times, or vice-versa)
+                    if (headerNav.classList.contains('nav-active')) {
+                        menuIcon.classList.remove('fa-bars');
+                        menuIcon.classList.add('fa-times'); // Show 'X' icon
+                        // Prevent body scrolling when the menu is open
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars'); // Show hamburger icon
+                        // Re-enable body scrolling
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // JavaScript for handling product clicks and passing data
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', (event) => {
+                    // Prevent default link behavior if clicking on buttons inside the card
+                    if (event.target.closest('.product-action-button')) {
+                        return;
+                    }
+                    navigateToProductPage(card);
+                });
+            });
+
+            document.querySelectorAll('.quick-view-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Prevent the product card click event from firing
+                    const card = event.target.closest('.product-card');
+                    navigateToProductPage(card);
+                });
+            });
+
+            function navigateToProductPage(card) {
+                const name = encodeURIComponent(card.dataset.name);
+                const price = encodeURIComponent(card.dataset.price);
+                const image = encodeURIComponent(card.dataset.image);
+                const desc = encodeURIComponent(card.dataset.desc);
+                const page = encodeURIComponent(card.dataset.page); // Pass the page number
+
+                window.location.href = `Product.html?name=${name}&price=${price}&image=${image}&desc=${desc}&page=${page}`;
+            }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Name - Velmora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/Product.css">
+    <style>
+        /* Add some basic styling for the new thumbnail active state if not already in Product.css */
+        .thumbnail-images .thumbnail {
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        .thumbnail-images .thumbnail.active {
+            border-color: #007bff; /* Or your brand color */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-logo">
+            <a href="index.html">Velmora</a>
+        </div>
+
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="Shop.html">Shop</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+            
+            <a href="cart.html" style="position: relative;">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-item-count" style="background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75em; position: absolute; top: -5px; right: -10px; display: none;"></span>
+            </a>
+            <button class="mobile-menu-button" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="product-page-container">
+
+        <section class="product-detail-section">
+            <div class="product-image-gallery">
+                <img src="https://placehold.co/600x800/E0D6CB/374151?text=Product+Image"
+                     alt="Main Product Image" class="main-product-image" id="main-product-image">
+                <div class="thumbnail-images" id="thumbnail-images">
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h1 class="product-name" id="product-name">Elegant Summer Dress</h1>
+                <p class="product-price" id="product-price">$89.00</p>
+                <p class="product-short-description" id="product-short-description">
+                    A beautiful and lightweight dress perfect for any summer occasion. Made from breathable fabric for maximum comfort.
+                </p>
+
+                <div class="product-options">
+                    <div class="option-group">
+                        <label for="size-select" class="option-label">Size:</label>
+                        <select id="size-select" class="option-select">
+                            <option value="S">Small</option>
+                            <option value="M" selected>Medium</option>
+                            <option value="L">Large</option>
+                            <option value="XL">X-Large</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="color-select" class="option-label">Color:</label>
+                        <select id="color-select" class="option-select">
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                            <option value="blue" selected>Sky Blue</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="add-to-cart-button">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+
+                <div class="quantity-selector">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" value="1" min="1" max="10" class="quantity-input">
+                </div>
+            </div>
+        </section>
+
+        <section class="product-description-section">
+            <h2 class="section-title">Product Description</h2>
+            <p id="full-product-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </section>
+
+        <section class="related-products-section">
+            <h2 class="section-title">Related Products</h2>
+            <div class="related-products-grid" id="related-products-grid">
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3 class="footer-heading">Company</h3>
+                <ul class="footer-list">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Help</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-heading">Payment Methods</h3>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-text">
+            &copy; 2023 Fashion Store. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // --- Cart Management Functions (Consolidated) ---
+        function getCartItems() {
+            const cart = localStorage.getItem('shoppingCart');
+            return cart ? JSON.parse(cart) : [];
+        }
+
+        function saveCartItems(cart) {
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        }
+
+        function addItemToCart(product) {
+            const cart = getCartItems();
+            const existingItem = cart.find(item => item.id === product.id);
+
+            if (existingItem) {
+                existingItem.quantity += (product.quantity || 1);
+            } else {
+                cart.push({ ...product, quantity: (product.quantity || 1) });
+            }
+            saveCartItems(cart);
+            console.log("Cart after adding:", cart);
+        }
+
+        function updateCartItemQuantity(productId, newQuantity) {
+            let cart = getCartItems();
+            newQuantity = parseInt(newQuantity);
+
+            if (isNaN(newQuantity) || newQuantity < 1) {
+                cart = cart.filter(item => item.id !== productId);
+            } else {
+                const itemToUpdate = cart.find(item => item.id === productId);
+                if (itemToUpdate) {
+                    itemToUpdate.quantity = newQuantity;
+                }
+            }
+            saveCartItems(cart);
+            console.log("Cart after quantity update:", cart);
+        }
+
+        function removeCartItem(productId) {
+            let cart = getCartItems();
+            cart = cart.filter(item => item.id !== productId);
+            saveCartItems(cart);
+            console.log("Cart after removal:", cart);
+        }
+
+        function calculateSubtotal() {
+            const cart = getCartItems();
+            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+
+        function updateCartIconQuantity() {
+            const cart = getCartItems();
+            const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+            let cartCountSpan = document.getElementById('cart-item-count');
+            if (!cartCountSpan) {
+                const cartIcon = document.querySelector('.header-icons .fa-shopping-cart');
+                cartCountSpan = document.createElement('span');
+                cartCountSpan.id = 'cart-item-count';
+                cartCountSpan.style.cssText = 'background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75em; position: absolute; top: -5px; right: -10px;';
+                if (cartIcon) {
+                    cartIcon.parentElement.style.position = 'relative';
+                    cartIcon.parentElement.appendChild(cartCountSpan);
+                }
+            }
+            if (cartCountSpan) {
+                cartCountSpan.textContent = totalQuantity > 0 ? totalQuantity : '';
+                cartCountSpan.style.display = totalQuantity > 0 ? 'inline-block' : 'none';
+            }
+        }
+        // End Cart Management Functions
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger Menu Logic
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const headerNav = document.querySelector('.header-nav');
+            const menuIcon = mobileMenuButton.querySelector('i');
+
+            if (mobileMenuButton && headerNav && menuIcon) {
+                mobileMenuButton.addEventListener('click', () => {
+                    headerNav.classList.toggle('nav-active');
+                    if (headerNav.classList.contains('nav-active')) {
+                        menuIcon.classList.remove('fa-bars');
+                        menuIcon.classList.add('fa-times');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // --- Product Data ---
+            const allShopProducts = [
+                // Page 1 products (T-Shirts)
+                { name: "Essential Oversized T-Shirt", price: "34.99", image: "img/Essential Oversized T-Shirt.png", desc: "Unisex, 100% cotton, relaxed fit. Perfect for streetwear style.", categoryPage: "1", categoryId: "t-shirts", galleryImages: ["img/Essential Oversized T-Shirt.png", "https://placehold.co/600x800/E0D6CB/374151?text=Tshirt+Front", "https://placehold.co/600x800/E0D6CB/374151?text=Tshirt+Back"] },
+                { name: "Minimalist Oversized T-Shirt", price: "32.99", image: "img/Minimalist Oversized T-Shirt.png", desc: "Soft-touch fabric, drop shoulder, for men & women.", categoryPage: "1", categoryId: "t-shirts", galleryImages: ["img/Minimalist Oversized T-Shirt.png"] },
+                { name: "Premium Comfort Oversized T-Shirt", price: "36.99", image: "img/Premium Comfort Oversized T-Shirt.png", desc: "Trendy color, breathable, oversized fit for all-day comfort.", categoryPage: "1", categoryId: "t-shirts", galleryImages: ["img/Premium Comfort Oversized T-Shirt.png"] },
+                { name: "Urban Relaxed Oversized T-Shirt", price: "35.99", image: "img/Urban Relaxed Oversized T-Shirt.png", desc: "Cool pastel, gender-neutral, premium cotton blend.", categoryPage: "1", categoryId: "t-shirts", galleryImages: ["img/Urban Relaxed Oversized T-Shirt.png"] },
+                // Page 2 products (Men's Shirts)
+                { name: "Men's Brown Checked Shirt", price: "44.99", image: "img/Men's Brown Checked Shirt.png", desc: "Trendy checks, regular fit, soft brushed fabric.", categoryPage: "2", categoryId: "men-shirts", galleryImages: ["img/Men's Brown Checked Shirt.png"] },
+                { name: "Men's Denim Shirt", price: "49.99", image: "img/Men's Denim Shirt.png", desc: "Classic blue denim, button-down, versatile for all seasons.", categoryPage: "2", categoryId: "men-shirts", galleryImages: ["img/Men's Denim Shirt.png", "https://placehold.co/600x800/E0D6CB/374151?text=Denim+Shirt+Alt"] },
+                { name: "Men's Abstract Print Shirt", price: "39.99", image: "img/Men's Abstract Print Shirt.png", desc: "Bold prints, lightweight, perfect for parties & outings.", categoryPage: "2", categoryId: "men-shirts", galleryImages: ["img/Men's Abstract Print Shirt.png"] },
+                { name: "Men's Olive Green Shirt", price: "42.99", image: "img/Men's Olive Green Shirt.png", desc: "Earthy tones, slim fit, soft and breathable fabric.", categoryPage: "2", categoryId: "men-shirts", galleryImages: ["img/Men's Olive Green Shirt.png"] },
+                // Page 3 products (Women's Shirts)
+                { name: "Women's Pastel Pink Shirt", price: "38.99", image: "img/Women's Pastel Pink Shirt.png", desc: "Soft pastel, relaxed fit, perfect for summer days.", categoryPage: "3", categoryId: "women-shirts", galleryImages: ["img/Women's Pastel Pink Shirt.png"] },
+                { name: "Women's Lavender Oversized Shirt", price: "41.99", image: "img/Women's Lavender Oversized Shirt.png", desc: "Trendy lavender, oversized, lightweight and airy.", categoryPage: "3", categoryId: "women-shirts", galleryImages: ["img/Women's Lavender Oversized Shirt.png"] },
+                { name: "Women's Mustard Shirt", price: "36.50", image: "img/Women's Mustard Shirt.png", desc: "Bright color, boxy fit, pairs well with jeans or skirts.", categoryPage: "3", categoryId: "women-shirts", galleryImages: ["img/Women's Mustard Shirt.png"] },
+                { name: "Women's Grey Striped Shirt", price: "40.00", image: "img/Women's Grey Striped Shirt.png", desc: "Subtle stripes, modern cut, soft and comfortable.", categoryPage: "3", categoryId: "women-shirts", galleryImages: ["img/Women's Grey Striped Shirt.png"] },
+                // Hardcoded "Elegant Summer Dress" - make sure it has a categoryId too!
+                { name: "Elegant Summer Dress", price: "89.00", image: "https://placehold.co/600x800/E0D6CB/374151?text=Product+Image", desc: "A beautiful and lightweight dress perfect for any summer occasion. Made from breathable fabric for maximum comfort.", categoryPage: "4", categoryId: "dresses", galleryImages: ["https://placehold.co/600x800/E0D6CB/374151?text=Dress+Image", "https://placehold.co/600x800/E0D6CB/374151?text=Dress+Detail+1", "https://placehold.co/600x800/E0D6CB/374151?text=Dress+Detail+2"] }
+            ];
+
+            // --- Product Detail Logic ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlProductName = urlParams.get('name');
+
+            let currentProductData = null;
+
+            if (urlProductName) {
+                // Try to find product by name from URL
+                currentProductData = allShopProducts.find(p => p.name === decodeURIComponent(urlProductName));
+            }
+
+            // If no product found by URL param or if directly accessing Product.html
+            // use "Elegant Summer Dress" as the default
+            if (!currentProductData) {
+                currentProductData = allShopProducts.find(p => p.name === "Elegant Summer Dress");
+            }
+
+            // Populate product details on the page
+            if (currentProductData) {
+                document.getElementById('product-name').textContent = currentProductData.name;
+                document.getElementById('product-price').textContent = `$${currentProductData.price}`;
+                document.getElementById('main-product-image').src = currentProductData.image;
+                document.getElementById('product-short-description').textContent = currentProductData.desc;
+                document.title = `${currentProductData.name} - Velmora`; // Update page title
+                // You can also update full-product-description here if available in your data
+            } else {
+                // Fallback if no product data is found at all (shouldn't happen with default)
+                console.error("No product data found to display.");
+                document.getElementById('product-name').textContent = "Product Not Found";
+                document.getElementById('product-price').textContent = "";
+                document.getElementById('main-product-image').src = "https://placehold.co/600x800/CCCCCC/AAAAAA?text=Product+Not+Found";
+                document.getElementById('product-short-description').textContent = "We couldn't find the product you're looking for.";
+                document.title = "Product Not Found - Velmora";
+            }
+
+            // --- Thumbnail Gallery Logic ---
+            const mainProductImage = document.getElementById('main-product-image');
+            const thumbnailImagesContainer = document.getElementById('thumbnail-images');
+
+            if (currentProductData && currentProductData.galleryImages && currentProductData.galleryImages.length > 0) {
+                thumbnailImagesContainer.innerHTML = ''; // Clear existing thumbnails
+                currentProductData.galleryImages.forEach((imgSrc, index) => {
+                    const thumbImg = document.createElement('img');
+                    thumbImg.src = imgSrc;
+                    thumbImg.alt = `Thumbnail ${index + 1}`;
+                    thumbImg.classList.add('thumbnail');
+                    if (index === 0) { // Set the first thumbnail as active by default
+                        thumbImg.classList.add('active');
+                    }
+                    thumbnailImagesContainer.appendChild(thumbImg);
+
+                    thumbImg.addEventListener('click', () => {
+                        // Update main image
+                        mainProductImage.src = imgSrc;
+                        // Update active class for thumbnails
+                        document.querySelectorAll('.thumbnail-images .thumbnail').forEach(t => t.classList.remove('active'));
+                        thumbImg.classList.add('active');
+                    });
+                });
+            } else {
+                // If no gallery images, just show the main product image as a single active thumbnail
+                thumbnailImagesContainer.innerHTML = '';
+                const thumbImg = document.createElement('img');
+                thumbImg.src = currentProductData ? currentProductData.image : 'https://placehold.co/100x150/E0D6CB/374151?text=Thumb';
+                thumbImg.alt = "Product Thumbnail";
+                thumbImg.classList.add('thumbnail', 'active'); // Always active if only one
+                thumbnailImagesContainer.appendChild(thumbImg);
+            }
+
+            // --- Related Products Logic ---
+            const relatedProductsGrid = document.getElementById('related-products-grid');
+
+            if (currentProductData && relatedProductsGrid) {
+                const currentProductCategoryId = currentProductData.categoryId;
+
+                // Filter all products by categoryId, excluding the current product
+                const filteredRelatedProducts = allShopProducts.filter(product =>
+                    product.categoryId === currentProductCategoryId && product.name !== currentProductData.name
+                );
+
+                if (filteredRelatedProducts.length > 0) {
+                    relatedProductsGrid.innerHTML = ''; // Clear existing placeholders
+
+                    // Shuffle the related products and take up to 4
+                    const shuffledRelatedProducts = filteredRelatedProducts.sort(() => 0.5 - Math.random());
+                    const productsToShow = shuffledRelatedProducts.slice(0, 4); // Display up to 4 related products
+
+                    productsToShow.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.classList.add('product-card');
+                        productCard.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}" class="product-card-image">
+                            <div class="product-card-content">
+                                <h3 class="product-title">${product.name}</h3>
+                                <p class="product-price">$${product.price}</p>
+                                <div class="product-actions">
+                                    <button class="product-action-button quick-view-button">Quick View</button>
+                                    <button class="product-action-button add-to-cart-button" data-product-name="${product.name}" data-product-price="${product.price}" data-product-image="${product.image}">Add to Cart</button>
+                                </div>
+                            </div>
+                        `;
+                        // Add event listener for the entire related product card
+                        productCard.addEventListener('click', () => {
+                            window.location.href = `Product.html?name=${encodeURIComponent(product.name)}&price=${encodeURIComponent(product.price)}&image=${encodeURIComponent(product.image)}&desc=${encodeURIComponent(product.desc)}&page=${encodeURIComponent(product.categoryPage || '')}&categoryId=${encodeURIComponent(product.categoryId || '')}`;
+                        });
+                        // Add event listeners for buttons inside the card, preventing parent click
+                        productCard.querySelector('.quick-view-button').addEventListener('click', (event) => {
+                            event.stopPropagation(); // Prevent the parent card click from firing
+                            window.location.href = `Product.html?name=${encodeURIComponent(product.name)}&price=${encodeURIComponent(product.price)}&image=${encodeURIComponent(product.image)}&desc=${encodeURIComponent(product.desc)}&page=${encodeURIComponent(product.categoryPage || '')}&categoryId=${encodeURIComponent(product.categoryId || '')}`;
+                        });
+                        // Specific Add to Cart for related products
+                        productCard.querySelector('.add-to-cart-button').addEventListener('click', (event) => {
+                            event.stopPropagation(); // Prevent the parent card click from firing
+                            const btn = event.target;
+                            const productToAdd = {
+                                id: btn.dataset.productName.replace(/\s+/g, '-').toLowerCase(),
+                                name: btn.dataset.productName,
+                                price: parseFloat(btn.dataset.productPrice),
+                                image: btn.dataset.productImage,
+                                quantity: 1 // Default quantity for related products
+                            };
+                            addItemToCart(productToAdd);
+                            alert(`Added "${productToAdd.name}" to cart!`);
+                            updateCartIconQuantity(); // Update cart icon count
+                        });
+                        relatedProductsGrid.appendChild(productCard);
+                    });
+                } else {
+                    relatedProductsGrid.innerHTML = '<p>No other related products found in this category.</p>';
+                }
+            } else if (relatedProductsGrid) {
+                relatedProductsGrid.innerHTML = '<p>Related products could not be loaded.</p>';
+            }
+
+            // --- Main Product Page Add to Cart ---
+            const mainAddToCartBtn = document.querySelector('.product-info .add-to-cart-button');
+            const quantityInput = document.getElementById('quantity');
+            const sizeSelect = document.getElementById('size-select');
+            const colorSelect = document.getElementById('color-select');
+
+            if (mainAddToCartBtn && quantityInput && currentProductData) {
+                mainAddToCartBtn.addEventListener('click', () => {
+                    const quantity = parseInt(quantityInput.value);
+                    const selectedSize = sizeSelect ? sizeSelect.value : 'N/A';
+                    const selectedColor = colorSelect ? colorSelect.value : 'N/A';
+
+                    const productToAdd = {
+                        id: currentProductData.name.replace(/\s+/g, '-').toLowerCase(), // Unique ID
+                        name: currentProductData.name,
+                        price: parseFloat(currentProductData.price), // Ensure price is a number
+                        image: currentProductData.image,
+                        quantity: quantity,
+                        size: selectedSize,
+                        color: selectedColor
+                    };
+
+                    if (quantity > 0) {
+                        addItemToCart(productToAdd);
+                        alert(`Added ${quantity} x "${productToAdd.name}" to cart!`);
+                        updateCartIconQuantity(); // Update cart icon count
+                    } else {
+                        alert("Please select a quantity greater than 0.");
+                    }
+                });
+            }
+
+            // Initialize cart icon quantity on page load
+            updateCartIconQuantity();
+        });
+    </script>
+</body>
+</html>

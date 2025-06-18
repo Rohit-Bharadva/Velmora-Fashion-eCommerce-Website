@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Velmora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- General site-wide styles -->
+    <link rel="stylesheet" href="css/Contact.css"> <!-- Specific contact page styles -->
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-logo">
+            <a href="index.html">Velmora</a>
+        </div>
+
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="Shop.html">Shop</a>
+            <a href="Contact.html">Contact</a> <!-- Ensure this link points to Contact.html -->
+        </nav>
+
+        <div class="header-icons">
+            
+            <a href="cart.html" style="position: relative;">
+                <i class="fas fa-shopping-cart"></i>
+                <!-- Span for dynamic cart item count -->
+                <span id="cart-item-count" style="background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75em; position: absolute; top: -5px; right: -10px; display: none;"></span>
+            </a>
+            <button class="mobile-menu-button" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="contact-page-container">
+        <h1 class="page-title">Contact Us</h1>
+
+        <div class="contact-content-wrapper">
+            <!-- Left Column: Contact Form -->
+            <section class="contact-form-section">
+                <h2 class="section-heading">Send Us a Message</h2>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="name" class="visually-hidden">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="visually-hidden">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="visually-hidden">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="visually-hidden">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Message" required></textarea>
+                    </div>
+                    <button type="submit" class="send-message-button">Send Message</button>
+                </form>
+            </section>
+
+            <!-- Right Column: Contact Information -->
+            <section class="contact-info-section">
+                <h2 class="section-heading">Contact Information</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>1234 Example St, City, State 2345</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:info@example.com">info@example.com</a></p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p><a href="tel:+1234567890">+1 234 567 890</a></p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3 class="footer-heading">Company</h3>
+                <ul class="footer-list">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Help</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-heading">Payment Methods</h3>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-text">
+            &copy; 2023 Velmora. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // --- Cart Management Functions (Duplicated for each HTML file as requested) ---
+        function getCartItems() {
+            const cart = localStorage.getItem('shoppingCart');
+            return cart ? JSON.parse(cart) : [];
+        }
+
+        function saveCartItems(cart) {
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        }
+
+        function addItemToCart(product) {
+            const cart = getCartItems();
+            const existingItem = cart.find(item => item.id === product.id);
+
+            if (existingItem) {
+                existingItem.quantity += (product.quantity || 1);
+            } else {
+                cart.push({ ...product, quantity: (product.quantity || 1) });
+            }
+            saveCartItems(cart);
+            console.log("Cart after adding:", cart);
+        }
+
+        function updateCartItemQuantity(productId, newQuantity) {
+            let cart = getCartItems();
+            newQuantity = parseInt(newQuantity);
+
+            if (isNaN(newQuantity) || newQuantity < 1) {
+                cart = cart.filter(item => item.id !== productId);
+            } else {
+                const itemToUpdate = cart.find(item => item.id === productId);
+                if (itemToUpdate) {
+                    itemToUpdate.quantity = newQuantity;
+                }
+            }
+            saveCartItems(cart);
+            console.log("Cart after quantity update:", cart);
+        }
+
+        function removeCartItem(productId) {
+            let cart = getCartItems();
+            cart = cart.filter(item => item.id !== productId);
+            saveCartItems(cart);
+            console.log("Cart after removal:", cart);
+        }
+
+        function calculateSubtotal() {
+            const cart = getCartItems();
+            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+
+        function updateCartIconQuantity() {
+            const cart = getCartItems();
+            const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+            let cartCountSpan = document.getElementById('cart-item-count');
+            if (!cartCountSpan) {
+                const cartIcon = document.querySelector('.header-icons .fa-shopping-cart');
+                cartCountSpan = document.createElement('span');
+                cartCountSpan.id = 'cart-item-count';
+                cartCountSpan.style.cssText = 'background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75em; position: absolute; top: -5px; right: -10px; display: none;';
+                if (cartIcon) {
+                    cartIcon.parentElement.style.position = 'relative';
+                    cartIcon.parentElement.appendChild(cartCountSpan);
+                }
+            }
+            if (cartCountSpan) {
+                cartCountSpan.textContent = totalQuantity > 0 ? totalQuantity : '';
+                cartCountSpan.style.display = totalQuantity > 0 ? 'inline-block' : 'none';
+            }
+        }
+        // End Cart Management Functions
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger Menu Logic
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const headerNav = document.querySelector('.header-nav');
+            const menuIcon = mobileMenuButton.querySelector('i');
+
+            if (mobileMenuButton && headerNav && menuIcon) {
+                mobileMenuButton.addEventListener('click', () => {
+                    headerNav.classList.toggle('nav-active');
+                    if (headerNav.classList.contains('nav-active')) {
+                        menuIcon.classList.remove('fa-bars');
+                        menuIcon.classList.add('fa-times');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // Contact Form Submission Logic
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (event) => {
+                    event.preventDefault(); // Prevent actual form submission
+
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+
+                    // Basic validation
+                    if (name && email && subject && message) {
+                        alert(`Thank you, ${name}! Your message has been sent. We will respond to ${email} shortly.\n\nSubject: ${subject}\nMessage: "${message}"`);
+                        contactForm.reset(); // Clear the form
+                    } else {
+                        alert('Please fill in all fields before sending your message.');
+                    }
+                });
+            }
+
+            // Initialize cart icon quantity on page load
+            updateCartIconQuantity();
+        });
+        
+    </script>
+</body>
+</html>
