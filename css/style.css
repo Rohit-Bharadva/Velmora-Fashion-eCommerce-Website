@@ -717,6 +717,7 @@ a {
         flex-direction: column;
         gap: 2rem;
         padding: 3rem 1rem;
+        padding-bottom: 0px;
         text-align: center;
     }
     .hero-content {
