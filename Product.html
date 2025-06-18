@@ -362,7 +362,6 @@
                                 <p class="product-price">$${product.price}</p>
                                 <div class="product-actions">
                                     <button class="product-action-button quick-view-button">Quick View</button>
-                                    <button class="product-action-button add-to-cart-button" data-product-name="${product.name}" data-product-price="${product.price}" data-product-image="${product.image}">Add to Cart</button>
                                 </div>
                             </div>
                         `;
@@ -374,21 +373,6 @@
                         productCard.querySelector('.quick-view-button').addEventListener('click', (event) => {
                             event.stopPropagation(); // Prevent the parent card click from firing
                             window.location.href = `Product.html?name=${encodeURIComponent(product.name)}&price=${encodeURIComponent(product.price)}&image=${encodeURIComponent(product.image)}&desc=${encodeURIComponent(product.desc)}&page=${encodeURIComponent(product.categoryPage || '')}&categoryId=${encodeURIComponent(product.categoryId || '')}`;
-                        });
-                        // Specific Add to Cart for related products
-                        productCard.querySelector('.add-to-cart-button').addEventListener('click', (event) => {
-                            event.stopPropagation(); // Prevent the parent card click from firing
-                            const btn = event.target;
-                            const productToAdd = {
-                                id: btn.dataset.productName.replace(/\s+/g, '-').toLowerCase(),
-                                name: btn.dataset.productName,
-                                price: parseFloat(btn.dataset.productPrice),
-                                image: btn.dataset.productImage,
-                                quantity: 1 // Default quantity for related products
-                            };
-                            addItemToCart(productToAdd);
-                            alert(`Added "${productToAdd.name}" to cart!`);
-                            updateCartIconQuantity(); // Update cart icon count
                         });
                         relatedProductsGrid.appendChild(productCard);
                     });
