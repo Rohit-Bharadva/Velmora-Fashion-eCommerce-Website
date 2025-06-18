@@ -1,0 +1,743 @@
+/* Basic Reset */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8;
+    color: #374151;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 1. Header (Top Navigation) */
+.header {
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 1rem 6rem; /* Default for large screens */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    position: relative; /* Essential for mobile menu absolute positioning */
+    z-index: 100; /* Ensures header is above other content */
+}
+
+.header-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.header-logo a {
+    font-family: "Playfair Display", serif;
+    border-radius: 0.25rem;
+    color: #111827;
+    transition: color 0.2s ease;
+}
+.header-logo a:hover {
+    color: #374151;
+}
+
+.header-nav {
+    /* Desktop styles: visible, flex row */
+    display: flex;
+    gap: 2rem;
+}
+
+.header-nav a {
+    color: #4b5563;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    transition: color 0.2s ease;
+}
+.header-nav a:hover {
+    color: #111827;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-icons a {
+    color: #4b5563;
+    border-radius: 0.25rem;
+    transition: color 0.2s ease;
+}
+.header-icons a:hover {
+    color: #111827;
+}
+
+.header-icons i {
+    font-size: 1.125rem;
+}
+
+.mobile-menu-button {
+    /* Desktop styles: hidden */
+    display: none;
+    color: #4b5563;
+    border-radius: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101; /* Above header and mobile menu */
+}
+.mobile-menu-button:hover {
+    color: #111827;
+}
+.mobile-menu-button i {
+    font-size: 1.25rem;
+}
+
+/* --- Responsive Adjustments for Header --- */
+
+
+@media (max-width: 1024px) {
+    .header {
+        padding: 1rem 2rem;
+    }
+}
+
+/* Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 1rem; /* Adjust padding for mobile */
+        flex-wrap: wrap; /* Allow items to wrap if needed */
+        justify-content: space-between; /* Space out logo and icons */
+        align-items: center;
+    }
+
+    .header-nav {
+        /* Mobile menu initial state (hidden by default on mobile) */
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links in the column */
+        padding: 0; /* No padding when hidden */
+        overflow: hidden; /* Hide content outside max-height */
+        max-height: 0; /* Start with 0 height for slide-down animation */
+        opacity: 0; /* Start with 0 opacity for fade-in */
+        transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        z-index: 99; /* Below header, above main content */
+        /* Crucially, display is flex ALWAYS on mobile, even when max-height is 0,
+           to allow smooth transitions without display changes. */
+        display: flex;
+    }
+
+    /* Mobile menu active state (controlled by JS toggling .nav-active class) */
+    .header-nav.nav-active {
+        max-height: 300px; /* Max height when expanded (adjust as needed for content) */
+        opacity: 1;
+        padding: 1rem 1rem; /* Padding when expanded */
+        transition: max-height 0.5s ease-in, opacity 0.5s ease-in, padding 0.5s ease-in;
+    }
+
+    .header-nav a {
+        display: block; /* Make links take full width for clickability */
+        width: 100%;
+        padding: 0.75rem 0.5rem; /* Mobile link padding */
+        text-align: center; /* Center mobile links */
+        border-bottom: 1px solid #f0f0f0; /* Separator */
+    }
+    .header-nav a:last-child {
+        border-bottom: none; /* No separator for last link */
+    }
+
+    .header-icons {
+        margin-left: auto; /* Push icons to the right, maintains spacing */
+        gap: 1.5rem; /* Slightly reduced gap for mobile */
+    }
+
+    .header-logo {
+        flex-grow: 1; /* Allows logo to take available space on left */
+        text-align: left;
+    }
+
+    .mobile-menu-button {
+        display: block; /* Hamburger button visible on mobile */
+    }
+}
+
+/* Very Small Screens (<= 480px) */
+@media (max-width: 480px) {
+    .header {
+        padding: 1rem 1rem;
+    }
+    .header-icons {
+        gap: 1.5rem;
+    }
+}
+
+/* Shop Page Specific Styles */
+.shop-page-container {
+    display: flex;
+    padding: 2rem 6rem;
+    gap: 2rem;
+    max-width: 85rem;
+    margin: 2rem auto;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.filters-section {
+    flex-shrink: 0;
+    width: 280px; /* Fixed width for the filters sidebar */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.filters-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-heading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+}
+
+.filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-list li {
+    margin-bottom: 0.5rem;
+}
+
+.filter-list label {
+    display: flex;
+    align-items: center;
+    color: #4b5563;
+    cursor: pointer;
+}
+
+.filter-list input[type="checkbox"] {
+    margin-right: 0.75rem;
+    accent-color: #6a2c07; /* Highlight color for checkboxes */
+}
+
+.price-range-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+
+.price-range-slider:hover {
+    opacity: 1;
+}
+
+.price-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #6a2c07;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.price-range-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #6a2c07;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.price-display {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.size-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.size-button {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: #4b5563;
+    transition: all 0.2s ease;
+}
+
+.size-button:hover {
+    background-color: #e5e7eb;
+    border-color: #9ca3af;
+}
+
+.size-button.active {
+    background-color: #6a2c07;
+    color: #ffffff;
+    border-color: #6a2c07;
+}
+
+.apply-filters-button {
+    background-color: #111827;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+.apply-filters-button:hover {
+    background-color: #374151;
+}
+
+.products-grid-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid columns */
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Add this to your style.css */
+
+.products-grid.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out; /* Speed up fade-out */
+}
+
+.products-grid.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in; /* Control fade-in speed */
+}
+
+/* Ensure product cards themselves can transition smoothly if their display changes */
+.product-card {
+    transition: opacity 0.5s ease-in-out; /* Smooth transition for individual cards */
+}
+/* Product Card - Reusing styles from homepage */
+.product-card {
+    background-color: #F0E8DF;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card-image {
+    width: 100%;
+    height: 17rem;
+    object-fit: cover;
+    display: block;
+}
+
+.product-card-content {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-title {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.product-price {
+    color: #374151;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+    margin-top: 0.5rem; /* Space between price and buttons */
+}
+.product-card:hover .product-actions {
+    opacity: 1;
+}
+
+.product-action-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap; /* Prevent buttons from wrapping */
+}
+
+.quick-view-button {
+    background-color: #6a2c07;
+    color: #ffffff;
+    width: 95%;
+    margin: 0 auto;
+    display: block;
+}
+.quick-view-button:hover {
+    background-color: #8b4513;
+}
+
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    width: 100%;
+}
+
+.pagination-button {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: #4b5563;
+    transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(.active) {
+    background-color: #e5e7eb;
+    border-color: #9ca3af;
+}
+
+.pagination-button.active {
+    background-color: #6a2c07;
+    color: #ffffff;
+    border-color: #6a2c07;
+    cursor: default;
+}
+
+@media (max-width: 800px) {
+    /* Remove button hover bounce animation */
+    
+    /* Always show product actions on mobile */
+    .product-actions {
+        opacity: 1 !important;
+    }
+    .product-card:hover .product-actions {
+        opacity: 1 !important;
+    }
+}
+
+/* Footer (Existing styles) */
+.footer {
+    background-color: #f0e8df;
+    color: #18181b;
+    padding: 3rem 1.5rem;
+    margin-top: 4rem;
+}
+.footer {
+    padding: 3rem 3rem;
+}
+
+.footer-content {
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+.footer-content {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.footer-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #18181b;
+    margin-bottom: 1rem;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-list a {
+    color: #18181a;
+    transition: color 0.2s ease;
+}
+.footer-list a:hover {
+    color: #000;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.social-icons a {
+    color: #18181a;
+    transition: color 0.2s ease;
+}
+.social-icons a:hover {
+    color: #000;
+}
+
+.payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 1.875rem;
+}
+
+.footer-bottom-text {
+    border-top: 1px solid #4b5563;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    text-align: center;
+    color: #18181a;
+}
+
+/* Prevent screen from being smaller than 300px */
+@media (max-width: 300px) {
+    html, body {
+        min-width: 300px;
+        overflow-x: auto;
+    }
+}
+/* --- Responsive Styles --- */
+
+
+
+/* Shop Page Responsive */
+@media (max-width: 1024px) {
+    .shop-page-container {
+        flex-direction: column;
+        padding: 2rem 2rem;
+        align-items: center; /* Center items when stacked */
+    }
+    .filters-section {
+        width: 100%; /* Full width for filters */
+        max-width: 400px; /* Limit max width for better appearance on larger screens */
+        margin-bottom: 2rem;
+    }
+    .products-grid {
+        width: 100%; /* Full width for products grid */
+        grid-template-columns: repeat(2, 1fr); /* Show 2 products per row */
+    }
+}
+
+@media (max-width: 640px) {
+    .shop-page-container {
+        padding: 1rem 1rem;
+    }
+    .products-grid {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+    }
+    .product-card-image {
+        height: 15rem; /* Slightly smaller image on small screens */
+    }
+    .product-action-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .pagination-button {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* 7. Footer Responsive */
+@media (max-width: 1024px) {
+    .footer {
+        padding: 2rem 2rem;
+    }
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+@media (max-width: 640px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .footer {
+        padding: 1.5rem 0.5rem;
+    }
+}
+
+/* 8. General Typography Scaling */
+@media (max-width: 480px) {
+    .hero-title, /* These styles are from the homepage, kept for consistency if using the same CSS file for both. */
+    .category-title,
+    .shop-arrivals-title,
+    .testimonials-title,
+    .newsletter-heading {
+        font-size: 1.5rem;
+    }
+    .hero-subtitle,
+    .newsletter-subtext {
+        font-size: 1rem;
+    }
+    .filters-title {
+        font-size: 1.25rem;
+    }
+    .filter-heading {
+        font-size: 1rem;
+    }
+    .product-title {
+        font-size: 1rem;
+    }
+    .product-price {
+        font-size: 0.9rem;
+    }
+}
+
+/* --- Animations --- */
+
+/* Fade-in for main content */
+.shop-page-container {
+    animation: fadeIn 0.8s ease;
+}
+
+/* Header slide-down on load */
+.header {
+    animation: slideDown 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Navbar link hover bounce */
+.header-nav a:hover,
+.header-icons a:hover,
+.mobile-menu-button:hover {
+    animation: buttonBounce 0.3s;
+}
+
+/* Keyframes */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes buttonBounce {
+    0% { transform: scale(1);}
+    30% { transform: scale(1.08);}
+    60% { transform: scale(0.96);}
+    100% { transform: scale(1);}
+}
+
+/* Product card pop-in */
+.product-card {
+    animation: cardPopIn 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Button hover bounce */
+.product-action-button:hover,
+.apply-filters-button:hover,
+.pagination-button:hover:not(.active) {
+    animation: buttonBounce 0.3s;
+}
+
+/* Fade-in for products grid */
+.products-grid {
+    animation: fadeIn 0.8s ease;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes cardPopIn {
+    from { opacity: 0; transform: scale(0.96);}
+    to { opacity: 1; transform: scale(1);}
+}
+
+@keyframes buttonBounce {
+    0% { transform: scale(1);}
+    30% { transform: scale(1.08);}
+    60% { transform: scale(0.96);}
+    100% { transform: scale(1);}
+}

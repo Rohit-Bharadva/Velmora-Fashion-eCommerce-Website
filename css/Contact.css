@@ -1,0 +1,254 @@
+/* css/Contact.css */
+
+/* Main container for the contact page */
+.contact-page-container {
+    padding: 3rem 6rem; /* Top/bottom padding, side padding for larger screens */
+    max-width: 85rem;   /* Max width consistent with other pages */
+    margin: 0 auto;     /* Center the container */
+    font-family: 'Inter', sans-serif; /* Ensure consistent font */
+    color: #111827; /* Dark text for headings and primary content */
+}
+
+/* Page Title (e.g., "Contact Us") */
+.page-title {
+    font-size: 3rem; /* Larger font size for main title */
+    font-weight: 700; /* Bold */
+    text-align: center; /* Center align as per wireframe */
+    margin-bottom: 3rem; /* Space below title */
+    color: #111827; /* Dark color */
+}
+
+/* Wrapper for the two main content columns (Form and Info) */
+.contact-content-wrapper {
+    display: flex;
+    gap: 3rem; /* Space between the two columns */
+    flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+    align-items: flex-start; /* Aligns content to the top */
+    margin-bottom: 4rem; /* Space before footer */
+}
+
+/* Section headings for form and info */
+.section-heading {
+    font-size: 2rem; /* Consistent heading size */
+    font-weight: 600; /* Semi-bold */
+    color: #111827;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+/* Contact Form Section (left column) */
+.contact-form-section {
+    flex: 2; /* Takes more space, e.g., 2/3 of available width */
+    min-width: 350px; /* Minimum width before wrapping */
+    background-color: #ffffff;
+    border-radius: 0.75rem; /* Rounded corners */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+    padding: 2.5rem;
+    flex-grow: 1; /* Allows it to grow and fill space */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between form groups */
+}
+
+.form-group-row {
+    display: flex;
+    gap: 1.5rem; /* Space between Name and Email inputs */
+}
+
+.form-group {
+    flex: 1; /* Makes inputs in a row take equal space */
+    position: relative; /* For potential future labels/error messages */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 0.5rem; /* Rounded input corners */
+    font-size: 1rem;
+    color: #374151; /* Darker text for input */
+    background-color: #f9fafb; /* Slightly off-white background */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* Inner shadow for depth */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #6b7280; /* Darker border on focus */
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.2); /* Focus ring */
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9ca3af; /* Lighter placeholder text */
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.send-message-button {
+    background-color: #111827; /* Dark button from your site */
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem; /* Rounded corners for the button */
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    width: fit-content; /* Adjust width to content */
+    margin-top: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.send-message-button:hover {
+    background-color: #4b5563; /* Lighter dark on hover */
+    transform: translateY(-1px); /* Slight lift effect */
+}
+
+.send-message-button:active {
+    transform: translateY(0); /* Press down effect */
+}
+
+
+/* Contact Information Section (right column) */
+.contact-info-section {
+    flex: 1; /* Takes remaining space, e.g., 1/3 of available width */
+    min-width: 280px; /* Minimum width before wrapping */
+    background-color: #f0e8df; /* Matches your hero/testimonial background */
+    border-radius: 0.75rem; /* Rounded corners */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between info items */
+    flex-grow: 1; /* Allows it to grow and fill space */
+}
+
+.info-item {
+    display: flex;
+    align-items: center; /* Vertically align icon and text */
+    gap: 1rem; /* Space between icon and text */
+    font-size: 1.1rem;
+    color: #374151; /* Dark grey text */
+}
+
+.info-item i {
+    font-size: 1.4rem; /* Larger icons */
+    color: #6b7280; /* Icon color */
+    width: 24px; /* Fixed width for icon to align text */
+    text-align: center;
+}
+
+.info-item a {
+    color: #374151; /* Link color */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.info-item a:hover {
+    color: #111827; /* Darker on hover */
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .contact-page-container {
+        padding: 2.5rem 2rem;
+    }
+    .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .contact-content-wrapper {
+        flex-direction: column; /* Stack columns vertically */
+        gap: 2rem; /* Adjust gap when stacked */
+        align-items: stretch; /* Stretch items to full width */
+    }
+    .contact-form-section,
+    .contact-info-section {
+        min-width: unset; /* Remove min-width constraints */
+        width: 100%; /* Take full width */
+        padding: 2rem; /* Slightly reduced padding */
+    }
+    .form-group-row {
+        flex-direction: column; /* Stack name and email inputs */
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-page-container {
+        padding: 2rem 1.5rem;
+    }
+    .page-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .section-heading {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+    .contact-form-section,
+    .contact-info-section {
+        padding: 1.5rem;
+    }
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+    .send-message-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    .info-item {
+        font-size: 1rem;
+        gap: 0.8rem;
+    }
+    .info-item i {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-page-container {
+        padding: 1.5rem 1rem;
+    }
+    .page-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .section-heading {
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+    }
+    .contact-form-section,
+    .contact-info-section {
+        padding: 1rem;
+    }
+    .contact-content-wrapper {
+        gap: 1.5rem;
+    }
+    .form-group input,
+    .form-group textarea {
+        padding: 0.7rem 0.9rem;
+    }
+    .send-message-button {
+        width: 100%; /* Make button full width on very small screens */
+    }
+}
+

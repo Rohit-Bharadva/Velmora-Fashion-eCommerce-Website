@@ -1,0 +1,747 @@
+/* Basic Reset */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8;
+    color: #374151;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 1. Header (Top Navigation) */
+.header {
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 1rem 6rem; /* Default for large screens */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    position: relative; /* Essential for mobile menu absolute positioning */
+    z-index: 100; /* Ensures header is above other content */
+}
+
+.header-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.header-logo a {
+    font-family: "Playfair Display", serif;
+    border-radius: 0.25rem;
+    color: #111827;
+    transition: color 0.2s ease;
+}
+.header-logo a:hover {
+    color: #374151;
+}
+
+.header-nav {
+    /* Desktop styles: visible, flex row */
+    display: flex;
+    gap: 2rem;
+}
+
+.header-nav a {
+    color: #4b5563;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    transition: color 0.2s ease;
+}
+.header-nav a:hover {
+    color: #111827;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-icons a {
+    color: #4b5563;
+    border-radius: 0.25rem;
+    transition: color 0.2s ease;
+}
+.header-icons a:hover {
+    color: #111827;
+}
+
+.header-icons i {
+    font-size: 1.125rem;
+}
+
+.mobile-menu-button {
+    /* Desktop styles: hidden */
+    display: none;
+    color: #4b5563;
+    border-radius: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101; /* Above header and mobile menu */
+}
+.mobile-menu-button:hover {
+    color: #111827;
+}
+.mobile-menu-button i {
+    font-size: 1.25rem;
+}
+
+/* --- Responsive Adjustments for Header --- */
+
+
+@media (max-width: 1024px) {
+    .header {
+        padding: 1rem 2rem;
+    }
+}
+
+/* Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 1rem; /* Adjust padding for mobile */
+        flex-wrap: wrap; /* Allow items to wrap if needed */
+        justify-content: space-between; /* Space out logo and icons */
+        align-items: center;
+    }
+
+    .header-nav {
+        /* Mobile menu initial state (hidden by default on mobile) */
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links in the column */
+        padding: 0; /* No padding when hidden */
+        overflow: hidden; /* Hide content outside max-height */
+        max-height: 0; /* Start with 0 height for slide-down animation */
+        opacity: 0; /* Start with 0 opacity for fade-in */
+        transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        z-index: 99; /* Below header, above main content */
+        /* Crucially, display is flex ALWAYS on mobile, even when max-height is 0,
+           to allow smooth transitions without display changes. */
+        display: flex;
+    }
+
+    /* Mobile menu active state (controlled by JS toggling .nav-active class) */
+    .header-nav.nav-active {
+        max-height: 300px; /* Max height when expanded (adjust as needed for content) */
+        opacity: 1;
+        padding: 1rem 1rem; /* Padding when expanded */
+        transition: max-height 0.5s ease-in, opacity 0.5s ease-in, padding 0.5s ease-in;
+    }
+
+    .header-nav a {
+        display: block; /* Make links take full width for clickability */
+        width: 100%;
+        padding: 0.75rem 0.5rem; /* Mobile link padding */
+        text-align: center; /* Center mobile links */
+        border-bottom: 1px solid #f0f0f0; /* Separator */
+    }
+    .header-nav a:last-child {
+        border-bottom: none; /* No separator for last link */
+    }
+
+    .header-icons {
+        margin-left: auto; /* Push icons to the right, maintains spacing */
+        gap: 1.5rem; /* Slightly reduced gap for mobile */
+    }
+
+    .header-logo {
+        flex-grow: 1; /* Allows logo to take available space on left */
+        text-align: left;
+    }
+
+    .mobile-menu-button {
+        display: block; /* Hamburger button visible on mobile */
+    }
+}
+
+/* Very Small Screens (<= 480px) */
+@media (max-width: 480px) {
+    .header {
+        padding: 1rem 1rem;
+    }
+    .header-icons {
+        gap: 1.5rem;
+    }
+}
+
+
+/* --- Product Page Specific Styles (No Changes Here, Reused from previous step) --- */
+.product-page-container {
+    max-width: 85rem;
+    margin: 2rem auto 4rem auto;
+    padding: 0 3rem;
+}
+
+.product-detail-section {
+    display: flex;
+    gap: 4rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 3rem;
+    align-items: flex-start;
+}
+
+.product-image-gallery {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main-product-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.thumbnail-images {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+    border-color: #6a2c07;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.product-info {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 0.5rem;
+}
+
+.product-name {
+    font-family: "Playfair Display", serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.product-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #6a2c07;
+    margin-bottom: 1rem;
+}
+
+.product-short-description {
+    font-size: 1.1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.product-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.option-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.option-label {
+    font-weight: 600;
+    color: #111827;
+    font-size: 1rem;
+}
+
+.option-select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #374151;
+    background-color: #f9fafb;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.option-select:focus {
+    border-color: #6a2c07;
+    box-shadow: 0 0 0 3px rgba(106, 44, 7, 0.2);
+}
+
+.add-to-cart-button {
+    background-color: #111827;
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: fit-content;
+}
+.add-to-cart-button:hover {
+    background-color: #4b5563;
+}
+.add-to-cart-button i {
+    font-size: 1.25rem;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.quantity-input {
+    width: 60px;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.section-title {
+    font-family: "Playfair Display", serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.product-description-section p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+/* Reusing .product-card styles */
+.product-card {
+    background-color: #F0E8DF;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card-image {
+    width: 100%;
+    height: 17rem;
+    object-fit: cover;
+    display: block;
+}
+
+.product-card-content {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-title {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.product-price {
+    color: #374151;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-top: 0.5rem;
+}
+.product-card:hover .product-actions {
+    opacity: 1;
+}
+
+.product-action-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.product-action-button:hover,
+.apply-filters-button:hover,
+.pagination-button:hover:not(.active) {
+    animation: buttonBounce 0.3s;
+}
+
+.quick-view-button {
+    background-color: #6a2c07;
+    color: #ffffff;
+}
+.quick-view-button:hover {
+    background-color: #8b4513;
+}
+
+.add-to-cart-button {
+    background-color: #1f2937;
+    color: #ffffff;
+}
+.add-to-cart-button:hover {
+    background-color: #374151;
+}
+
+
+/* Footer - Reused from existing site */
+.footer {
+    background-color: #f0e8df;
+    color: #18181b;
+    padding: 3rem 3rem;
+    margin-top: 4rem;
+}
+.footer-content {
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.footer-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #18181b;
+    margin-bottom: 1rem;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-list a {
+    color: #18181a;
+    transition: color 0.2s ease;
+}
+.footer-list a:hover {
+    color: #000;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.social-icons a {
+    color: #18181a;
+    transition: color 0.2s ease;
+}
+.social-icons a:hover {
+    color: #000;
+}
+
+.payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 1.875rem;
+}
+
+.footer-bottom-text {
+    border-top: 1px solid #4b5563;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    text-align: center;
+    color: #18181a;
+}
+@media (max-width: 1024px) {
+    .footer {
+        padding: 2rem 2rem;
+    }
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+@media (max-width: 640px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .footer {
+        padding: 1.5rem 0.5rem;
+    }
+}
+/* Responsive Product Page */
+@media (max-width: 1024px) {
+    .product-page-container {
+        padding: 0 2rem;
+    }
+    .product-detail-section {
+        gap: 2rem;
+        padding: 2rem;
+    }
+    .product-name {
+        font-size: 2.25rem;
+    }
+    .product-price {
+        font-size: 1.75rem;
+    }
+    .add-to-cart-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-page-container {
+        padding: 0 1rem;
+    }
+    .product-detail-section {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+    .product-image-gallery,
+    .product-info {
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+    }
+    .product-image-gallery {
+        align-items: center;
+    }
+    .main-product-image {
+        max-width: 80%;
+    }
+    .product-name {
+        font-size: 2rem;
+    }
+    .product-price {
+        font-size: 1.5rem;
+    }
+    .product-short-description {
+        font-size: 1rem;
+    }
+    .add-to-cart-button {
+        width: 100%;
+    }
+    .product-options {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .option-group {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 48%;
+    }
+    .option-select {
+        width: 100%;
+    }
+    .related-products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .product-card-image {
+        height: 12rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-page-container {
+        padding: 0 0.5rem;
+    }
+    .product-detail-section {
+        padding: 1rem;
+    }
+    .product-name {
+        font-size: 1.75rem;
+    }
+    .product-price {
+        font-size: 1.25rem;
+    }
+    .section-title {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .option-group {
+        width: 100%;
+    }
+    .related-products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Fade-in animation for main content */
+/* Header slide-down on load */
+.header {
+    animation: slideDown 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Navbar link hover bounce */
+.header-nav a:hover,
+.header-icons a:hover,
+.mobile-menu-button:hover {
+    animation: buttonBounce 0.3s;
+}
+
+/* Keyframes */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes buttonBounce {
+    0% { transform: scale(1);}
+    30% { transform: scale(1.08);}
+    60% { transform: scale(0.96);}
+    100% { transform: scale(1);}
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.product-detail-section,
+.related-products-grid,
+.footer {
+    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both;
+}
+
+/* Pop-in for product cards */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.product-card {
+    animation: popIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+/* Button press effect */
+.add-to-cart-button,
+.product-action-button {
+    transition: background-color 0.3s, transform 0.15s;
+}
+.add-to-cart-button:active,
+.product-action-button:active {
+    transform: scale(0.96);
+}
+
+/* Thumbnail hover pulse */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(106,44,7,0.2);}
+    70% { box-shadow: 0 0 0 10px rgba(106,44,7,0);}
+    100% { box-shadow: 0 0 0 0 rgba(106,44,7,0);}
+}
+.thumbnail:hover,
+.thumbnail.active {
+    animation: pulse 0.6s;
+}
+
+/* Mobile menu slide-down (already uses transition, but add fade-in for links) */
+.header-nav.nav-active a {
+    animation: fadeInUp 0.5s both;
+}

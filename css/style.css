@@ -1,0 +1,934 @@
+/* Basic Reset */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8;
+    color: #374151;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 1. Header (Top Navigation) */
+.header {
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 1rem 6rem; /* Default for large screens */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    position: relative; /* Essential for mobile menu absolute positioning */
+    z-index: 100; /* Ensures header is above other content */
+}
+
+.header-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.header-logo a {
+    font-family: "Playfair Display", serif;
+    border-radius: 0.25rem;
+    color: #111827;
+    transition: color 0.2s ease;
+}
+.header-logo a:hover {
+    color: #374151;
+}
+
+.header-nav {
+    /* Desktop styles: visible, flex row */
+    display: flex;
+    gap: 2rem;
+}
+
+.header-nav a {
+    color: #4b5563;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    transition: color 0.2s ease;
+}
+.header-nav a:hover {
+    color: #111827;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-icons a {
+    color: #4b5563;
+    border-radius: 0.25rem;
+    transition: color 0.2s ease;
+}
+.header-icons a:hover {
+    color: #111827;
+}
+
+.header-icons i {
+    font-size: 1.125rem;
+}
+
+.mobile-menu-button {
+    /* Desktop styles: hidden */
+    display: none;
+    color: #4b5563;
+    border-radius: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101; /* Above header and mobile menu */
+}
+.mobile-menu-button:hover {
+    color: #111827;
+}
+.mobile-menu-button i {
+    font-size: 1.25rem;
+}
+
+/* --- Responsive Adjustments for Header --- */
+
+
+@media (max-width: 1024px) {
+    .header {
+        padding: 1rem 2rem;
+    }
+}
+
+/* Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 1rem; /* Adjust padding for mobile */
+        flex-wrap: wrap; /* Allow items to wrap if needed */
+        justify-content: space-between; /* Space out logo and icons */
+        align-items: center;
+    }
+
+    .header-nav {
+        /* Mobile menu initial state (hidden by default on mobile) */
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links in the column */
+        padding: 0; /* No padding when hidden */
+        overflow: hidden; /* Hide content outside max-height */
+        max-height: 0; /* Start with 0 height for slide-down animation */
+        opacity: 0; /* Start with 0 opacity for fade-in */
+        transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        z-index: 99; /* Below header, above main content */
+        /* Crucially, display is flex ALWAYS on mobile, even when max-height is 0,
+           to allow smooth transitions without display changes. */
+        display: flex;
+    }
+
+    /* Mobile menu active state (controlled by JS toggling .nav-active class) */
+    .header-nav.nav-active {
+        max-height: 300px; /* Max height when expanded (adjust as needed for content) */
+        opacity: 1;
+        padding: 1rem 1rem; /* Padding when expanded */
+        transition: max-height 0.5s ease-in, opacity 0.5s ease-in, padding 0.5s ease-in;
+    }
+
+    .header-nav a {
+        display: block; /* Make links take full width for clickability */
+        width: 100%;
+        padding: 0.75rem 0.5rem; /* Mobile link padding */
+        text-align: center; /* Center mobile links */
+        border-bottom: 1px solid #f0f0f0; /* Separator */
+    }
+    .header-nav a:last-child {
+        border-bottom: none; /* No separator for last link */
+    }
+
+    .header-icons {
+        margin-left: auto; /* Push icons to the right, maintains spacing */
+        gap: 1.5rem; /* Slightly reduced gap for mobile */
+    }
+
+    .header-logo {
+        flex-grow: 1; /* Allows logo to take available space on left */
+        text-align: left;
+    }
+
+    .mobile-menu-button {
+        display: block; /* Hamburger button visible on mobile */
+    }
+}
+
+/* Very Small Screens (<= 480px) */
+@media (max-width: 480px) {
+    .header {
+        padding: 1rem 1rem;
+    }
+    .header-icons {
+        gap: 1.5rem;
+    }
+}
+/* Hero Section - Improved Layout */
+.hero-section {
+    background-color: #F0E8DF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 2rem;
+    padding-top: 2rem;
+    gap: 4rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.hero-content {
+    flex: 1 1 0;
+    max-width: 600px;
+    text-align: left;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #111827;
+    margin-bottom: 1.25rem;
+    margin-top: 0;
+    font-family: "Playfair Display", serif;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #374151;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+.hero-button {
+    background-color: #111827;
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    align-self: flex-start;
+}
+.hero-button:hover {
+    background-color: #4b5563;
+}
+
+.hero-image-container {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+}
+
+.hero-image {
+    border-radius: 1rem;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.10));
+    width: 100%;
+    max-width: 500px;
+    height: 720px;
+    object-fit: cover;
+}
+
+/* Category Highlights */
+.category-section {
+    padding: 4rem 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 85rem;
+}
+.category-section {
+    padding: 4rem 3rem;
+}
+
+.category-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #111827;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+.category-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.category-card {
+    background-color: #F0E8DF;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.category-card:hover {
+    transform: scale(1.05);
+}
+.category-card:hover .category-card-link {
+    background-color: #6a2c07;
+    color: #fff;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.category-card-image {
+    padding: 1rem;
+    width: 100%;
+    max-width: 250px;
+    height: 25rem;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.4s cubic-bezier(.4,2,.6,1), z-index 0s;
+    
+}
+.category-card:hover .category-card-image,
+.category-card-image:hover {
+    transform: scale(1.05);
+    z-index: 2;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.50));
+    transition: filter 0.4s cubic-bezier(.4,2,.6,1), transform 0.4s cubic-bezier(.4,2,.6,1), z-index 0s;
+}
+
+.category-card-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.category-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.category-card-description {
+    color: #4b5563;
+}
+
+.category-card-link {
+    margin-top: 1rem;
+    display: inline-block;
+    
+    color: #6a2c07;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.category-card-link:hover {
+    background-color: #6a2c07;
+    color: #fff;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Featured Collections / Shop Arrivals */
+.shop-arrivals-section {
+    padding: 4rem 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 85rem;
+}
+.shop-arrivals-section {
+    padding: 4rem 3rem;
+}
+
+.shop-arrivals-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #111827;
+}
+
+.product-scroll-container {
+    display: flex;
+    overflow-x: scroll;
+    padding-bottom: 1rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.product-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.product-card-wrapper {
+    flex-shrink: 0;
+    width: 18rem;
+    min-width: 18rem;
+    max-width: 18rem;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card {
+    background-color: #F0E8DF;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-image {
+    width: 100%;
+    height: 18rem;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.product-card-content {
+    padding: 1rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.product-title {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.product-price {
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.product-card:hover .product-actions {
+    opacity: 1;
+}
+
+.product-action-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap; /* Prevent buttons from wrapping */
+}
+
+.quick-view-button {
+    background-color: #6a2c07;
+    color: #ffffff;
+    width: 95%;
+    margin: 0 auto;
+    display: block;
+}
+.quick-view-button:hover {
+    background-color: #8b4513;
+}
+/* Button hover bounce */
+.product-action-button:hover,
+.apply-filters-button:hover,
+.pagination-button:hover:not(.active) {
+    animation: buttonBounce 0.3s;
+}
+
+@media (max-width: 800px) {
+    /* Remove button hover bounce animation */
+    
+    /* Always show product actions on mobile */
+    .product-actions {
+        opacity: 1 !important;
+    }
+    .product-card:hover .product-actions {
+        opacity: 1 !important;
+    }
+}
+
+/* Testimonials or Social Proof */
+.testimonials-section {
+    background-color: #F0E8DF;
+    padding: 4rem 1.5rem;
+    margin-top: 4rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.testimonials-section {
+    padding: 4rem 3rem;
+}
+
+.testimonials-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #111827;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+.testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.testimonial-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.testimonial-photo {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.testimonial-quote {
+    color: #374151;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.star-rating {
+    color: #f59e0b;
+    margin-bottom: 0.5rem;
+}
+
+.customer-name {
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Newsletter Signup / Promo */
+.newsletter-section {
+    background-color: #F0E8DF;
+    color: #18181a;
+    padding: 4rem 1.5rem;
+    margin-top: 4rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.newsletter-section {
+    padding: 4rem 3rem;
+}
+
+.newsletter-heading {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.newsletter-subtext {
+    font-size: 1.125rem;
+    color: #18181a;
+    margin-bottom: 2rem;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 38rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.newsletter-form {
+    flex-direction: row;
+}
+
+.newsletter-input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 9999px;
+    border: 2px solid #374151;
+    background-color: #18181a;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+.newsletter-input {
+    flex: 1;
+}
+.newsletter-input::placeholder {
+    color: #9ca3af;
+}
+.newsletter-input:focus {
+    border-color: #6a2c07;
+}
+
+.newsletter-button {
+    background-color: #6a2c07;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.newsletter-button:hover {
+    background-color: #8b4513;
+}
+
+/* Footer */
+.footer {
+    background-color: #f0e8df;
+    color: #18181b;
+    padding: 3rem 1.5rem;
+    margin-top: 4rem;
+    
+}
+.footer {
+    padding: 3rem 3rem;
+}
+
+.footer-content {
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+.footer-content {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.footer-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #18181b;
+    margin-bottom: 1rem;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-list a {
+    color: #18181a;
+    transition: color 0.2s ease;
+}
+.footer-list a:hover {
+    color: #000;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.social-icons a {
+    color: #18181a;
+    transition: color 0.2s ease;
+}
+.social-icons a:hover {
+    color: #000;
+}
+
+.payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 1.875rem;
+}
+
+.footer-bottom-text {
+    border-top: 1px solid #4b5563;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    text-align: center;
+    color: #18181a;
+}
+
+/* Remove min-width media queries and attach their rules directly above */
+/* --- Responsive Styles --- */
+
+
+/* 2. Hero Section Responsive */
+@media (max-width: 1024px) {
+    .hero-section {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem 1rem;
+        text-align: center;
+    }
+    .hero-content {
+        max-width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+    .hero-image-container {
+        max-width: 100%;
+        height: auto;
+    }
+    .hero-image {
+        max-width: 100%;
+        height: auto;
+    }
+    .hero-title {
+        font-size: 2.25rem;
+    }
+}
+
+/* 3. Category Section Responsive */
+@media (max-width: 1024px) {
+    .category-section {
+        padding: 3rem 2rem;
+    }
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 4. Shop Arrivals Responsive */
+@media (max-width: 1024px) {
+    .shop-arrivals-section {
+        padding: 3rem 2rem;
+    }
+    .product-card-wrapper {
+        width: 16rem;
+    }
+}
+@media (max-width: 640px) {
+    .product-card-wrapper {
+        width: 90vw;
+        min-width: 15rem;
+        max-width: 20rem;
+    }
+}
+
+/* 5. Testimonials Responsive */
+@media (max-width: 1024px) {
+    .testimonials-section {
+        padding: 3rem 2rem;
+    }
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 6. Newsletter Responsive */
+@media (max-width: 768px) {
+    .newsletter-section {
+        padding: 3rem 2rem;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    .newsletter-input,
+    .newsletter-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* 7. Footer Responsive */
+@media (max-width: 1024px) {
+    .footer {
+        padding: 2rem 2rem;
+    }
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+@media (max-width: 640px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .footer {
+        padding: 1.5rem 0.5rem;
+    }
+}
+
+/* 8. General Typography Scaling */
+@media (max-width: 480px) {
+    .hero-title,
+    .category-title,
+    .shop-arrivals-title,
+    .testimonials-title,
+    .newsletter-heading {
+        font-size: 1.5rem;
+    }
+    .hero-subtitle,
+    .newsletter-subtext {
+        font-size: 1rem;
+    }
+}
+
+/* 9. Utility: Hide scrollbars on mobile for horizontal scrolls */
+@media (max-width: 640px) {
+    .product-scroll-container {
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+    .product-card-wrapper {
+        scroll-snap-align: start;
+    }
+}
+
+
+/* === Animations === */
+/* Header slide-down on load */
+.header {
+    animation: slideDown 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Navbar link hover bounce */
+.header-nav a:hover,
+.header-icons a:hover,
+.mobile-menu-button:hover {
+    animation: buttonBounce 0.3s;
+}
+
+/* Keyframes */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes buttonBounce {
+    0% { transform: scale(1);}
+    30% { transform: scale(1.08);}
+    60% { transform: scale(0.96);}
+    100% { transform: scale(1);}
+}
+
+
+/* Fade-in for sections */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale-in for cards */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Slide-in for hero image */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Apply fade-in to main sections */
+.hero-section,
+.category-section,
+.shop-arrivals-section,
+.testimonials-section,
+.newsletter-section,
+.footer {
+    animation: fadeInUp 0.8s cubic-bezier(.4,2,.6,1) 0.1s both;
+}
+
+/* Apply scale-in to cards */
+.category-card,
+.product-card,
+.testimonial-card {
+    animation: scaleIn 0.7s cubic-bezier(.4,2,.6,1) 0.2s both;
+}
+
+/* Slide-in for hero image */
+.hero-image-container {
+    animation: slideInRight 1s cubic-bezier(.4,2,.6,1) 0.3s both;
+}
