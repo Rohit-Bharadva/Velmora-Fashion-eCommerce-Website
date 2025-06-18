@@ -439,14 +439,25 @@ a {
     opacity: 1;
 }
 
-.product-action-button {
+..product-action-button {
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
     font-size: 0.875rem;
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    white-space: nowrap;
+    white-space: nowrap; /* Prevent buttons from wrapping */
+}
+
+.quick-view-button {
+    background-color: #6a2c07;
+    color: #ffffff;
+    width: 95%;
+    margin: 10px auto;
+    display: block;
+}
+.quick-view-button:hover {
+    background-color: #8b4513;
 }
 
 .product-action-button:hover,
@@ -633,7 +644,7 @@ a {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
     .product-card-image {
-        height: 12rem;
+        height: 22rem;
     }
 }
 
@@ -744,4 +755,16 @@ a {
 /* Mobile menu slide-down (already uses transition, but add fade-in for links) */
 .header-nav.nav-active a {
     animation: fadeInUp 0.5s both;
+}
+
+@media (max-width: 800px) {
+    /* Remove button hover bounce animation */
+    
+    /* Always show product actions on mobile */
+    .product-actions {
+        opacity: 1 !important;
+    }
+    .product-card:hover .product-actions {
+        opacity: 1 !important;
+    }
 }
