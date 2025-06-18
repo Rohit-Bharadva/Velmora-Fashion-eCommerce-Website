@@ -611,7 +611,7 @@ a {
         align-items: center;
     }
     .main-product-image {
-        max-width: 80%;
+        max-width: 100%;
     }
     .product-name {
         font-size: 2rem;
