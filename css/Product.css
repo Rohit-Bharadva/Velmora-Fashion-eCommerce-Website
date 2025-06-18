@@ -439,7 +439,7 @@ a {
     opacity: 1;
 }
 
-..product-action-button {
+.product-action-button {
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
     font-size: 0.875rem;
